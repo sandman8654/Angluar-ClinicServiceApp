@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://cdn01.boxcdn.net/content-experience/0.48.0/third-party/dicom/dicom.min.css" >
+<span id="my-container"></span>
+<script>
+	  $(function () {
+        setTimeout(function () {
+			
+			var accessToken = angular.element(document.getElementById('my-container')).scope().accessToken;
+			var patientDicomFiles = angular.element(document.getElementById('my-container')).scope().patientDicomFiles;
+			
+			box.dicom.createViewer(document.body, {
+				'accessToken': accessToken,
+				'studies': patientDicomFiles
+			});
+		 }, 3500);
+    });
+</script>

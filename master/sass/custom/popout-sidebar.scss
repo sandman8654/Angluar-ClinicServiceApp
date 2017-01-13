@@ -1,0 +1,154 @@
+// uib-tab-heading / popout sidebar
+.nav-tabs > li > a {
+  padding: 0;
+}
+
+.offsidebar .nav-tabs.nav-justified > li.active > a {
+  color: $brand-green;
+}
+
+.tab-heading-inner {
+  padding: 10px 20px;
+  &.date {
+    background: $brand-green;
+    color: $white;
+  }
+}
+
+.tab-pane {
+  h4 {
+    margin: 5px 0 -5px;
+  }
+  p {
+    margin-top: 5px;
+    padding: 0 5px;
+  }
+  .colleagues-present-title {
+    margin-bottom: 3px;
+  }
+  .colleagues {
+    padding: 0 10px;
+    margin-bottom: 20px;
+    img, .audio {
+      margin: 5px 5px 0;
+    }
+    img {
+      width: 32px;
+      height: 32px;
+    }
+    img.active {
+      border: 3px solid $pale-blue;
+      margin-right: 0;
+      width: 36px;
+      height: 36px;
+    }
+  }
+  .collab-tools {
+    width: 80%;
+    margin: 0 auto 50px;
+    button {
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      background: $med-blue;
+      color: $white;
+      &:active {
+        background: darken($med-blue, 5%);
+      }
+    }
+  }
+  .audio {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: $white;
+    border: 3px solid $white;
+    border-radius: 50%;
+    font-size: 1.2em;
+    text-align: center;
+    position: relative;
+    top: 5px;
+    color: $black;
+    .fa {
+      color: $black;
+    }
+    &.active {
+      border: 3px solid $pale-blue;
+      width: 36px;
+      height: 36px;
+    }
+  }
+  .full-width {
+    width: 100%;
+    color: $white;
+    & > div {
+      background: $brand-green;
+      width: 50%;
+      float: left;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 1.5em;
+    }
+  }
+  .media-box {
+    padding: 0 5px;
+    p {
+      margin-top: 0;
+    }
+    .pull-right {
+      position: relative;
+      .fa {
+        font-size: 1.3em;
+        position: absolute;
+        top: 29px;
+        right: 5px;
+      }
+    }
+  }
+  .status {
+    margin-bottom: 30px;
+    min-height: 30px;
+    & > div {
+      width: 50%;
+      float: left;
+      padding: 0 0 0 10px;
+    }
+    .join-leave {
+      text-align: right;
+      button {
+        width: 90%;
+        font-size: 1.2em;
+      }
+    }
+    .start-finish {
+      font-size: .8em;
+      &:first-child {
+        margin-bottom: -5px;
+      }
+      .title {
+        margin-top: 3px;
+      }
+    }
+    .time {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-top: -5px;
+      span {
+        font-size: 0.7em;
+      }
+    }
+  }
+  .your-status-title {
+    margin-bottom: 0;
+  }
+  .mic-status {
+    span {
+      color: $pale-blue;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .audio {
+      top: 0;
+    }
+  }
+}

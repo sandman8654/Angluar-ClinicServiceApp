@@ -1,0 +1,160 @@
+<h3 ng-controller="PatientListController as plist">Patients
+
+   <button type="submit" ng-if="plist.user_type=='provider'" class="btn pull-right btn-default" ng-click="plist.invitePatientModal('sm')">
+      <span class=""><em class="fa fa-plus"></em></span>
+           InvitPatient
+   </button>
+   <button type="submit" ng-if="plist.user_type=='provider'" class="btn pull-right btn-default" ng-click="plist.addPatientModal('sm')">
+      <span class=""><em class="fa fa-plus"></em></span>
+           Add Patient
+   </button>
+   <script type="text/ng-template" id="/invitePatientModal.html">
+      <div class="modal-header">
+         <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+         <h4 id="myModalLabel" class="text-center modal-title">Invite Patient</h4>
+      </div>
+      <div class="modal-body">
+         <form role="form" ng-submit="invitePatientNew()" name="invitePatientForm" novalidate=""
+                   class="form-validate mb-lg">
+
+            <div class="modal-input form-group has-feedback">
+               <input type="text" name="first_name" required="" class="form-control" ng-model="patient.first_name" placeholder="First Name"></input>
+               <span ng-show="invitePatientForm.first_name.$dirty &amp;&amp; invitePatientForm.first_name.$error.required" class="text-danger">This field is required</span>
+            </div>
+
+            <div class="modal-input form-group has-feedback">
+               <input type="text" name="last_name" required="" class="form-control" ng-model="patient.last_name" placeholder="Last Name"></input>
+               <span ng-show="invitePatientForm.last_name.$dirty &amp;&amp; invitePatientForm.last_name.$error.required" class="text-danger">This field is required</span>
+            </div>  
+
+            <div class="modal-input form-group has-feedback">
+               <input id="modal-email" type="email" name="email" placeholder="Email Address" autocomplete="off" ng-model="patient.email" required=""  class="form-control"/>
+               <span ng-show="invitePatientForm.email.$dirty &amp;&amp; invitePatientForm.email.$error.required" class="text-danger">This field is required</span>
+               <span ng-show="invitePatientForm.email.$dirty &amp;&amp; invitePatientForm.email.$error.email" class="text-danger">This field must be a valid email address</span>
+            </div>             
+
+            <div ng-show="patientAuthMsg" class="alert alert-danger text-center">{{patientAuthMsg}}</div>
+            <div class="footer text-center">
+               <button id="add-bank-btn" ng-disabled="is_loading" type="submit" class="btn btn-primary">Invite Patient &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" class="img-responsive" /></button>
+            </div>
+         </form>
+      </div>
+   </script>
+
+   <script type="text/ng-template" id="/addPatientModal.html">
+      <div class="modal-header">
+         <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+         <h4 id="myModalLabel" class="text-center modal-title">Add Patient</h4>
+      </div>
+      <div class="modal-body">
+         <form role="form" ng-submit="addPatient()" name="addPatientForm" novalidate="" class="form-validate mb-lg">
+            <div class="modal-input form-group has-feedback">
+               <input type="text" name="first_name" required="" class="form-control" ng-model="patient.first_name" placeholder="First Name"></input>
+               <span ng-show="addPatientForm.first_name.$dirty &amp;&amp; addPatientForm.first_name.$error.required" class="text-danger">This field is required</span>
+            </div>
+
+            <div class="modal-input form-group has-feedback">
+               <input type="text" name="last_name" required="" class="form-control" ng-model="patient.last_name" placeholder="Last Name"></input>
+               <span ng-show="addPatientForm.last_name.$dirty &amp;&amp; addPatientForm.last_name.$error.required" class="text-danger">This field is required</span>
+            </div>  
+
+            <div class="modal-input form-group has-feedback">
+               <input id="modal-email" type="email" name="email" placeholder="Email Address" autocomplete="off" ng-model="patient.email" required=""  class="form-control"/>
+               <span ng-show="addPatientForm.email.$dirty &amp;&amp; addPatientForm.email.$error.required" class="text-danger">This field is required</span>
+               <span ng-show="addPatientForm.email.$dirty &amp;&amp; addPatientForm.email.$error.email" class="text-danger">This field must be a valid email address</span>
+            </div> 
+
+            <div class="modal-input form-group has-feedback">
+                <p class="date-picker input-group">
+                    <input type="text" name="date" required="" placeholder="Birthday" uib-datepicker-popup="{{pickerFormat}}" ng-model="patient.date" is-open="pickerOpened"  uib-datepicker-options="pickerDateOptions"  close-text="Close" class="form-control" />
+                    <span class="input-group-btn">
+                       <button type="button" ng-click="calenderOpen($event)" class="btn btn-default">
+                          <em class="fa fa-calendar"></em>
+                       </button>
+                    </span>
+                </p>
+                <span ng-show="form.validateInput('date', 'required')" class="text-danger">This field is required</span>
+            </div>
+
+            <div class="modal-input form-group has-feedback" style="display: inline-block;">
+              <input type="text" name="city" ng-model="patient.city" placeholder="City" class="col-sm-4 city-state form-control"></input>
+              <select name="state" placeholder="State" class="col-sm-4 city-state form-control" ng-model="patient.state">
+                <option selected="selected">State</option>
+                <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
+              </select>
+              <!-- <input type="number" name="zipcode" ng-model="patient.zipcode" placeholder="Zip Code" class="col-sm-4 city-state form-control"></input>
+              <span ng-show="addPatientForm.zipcode.$dirty &amp;&amp; addPatientForm.zipcode.$error.number" class="text-danger">Zipcode field must be a valid number</span> -->
+            </div>
+
+            <div class="modal-input form-group has-feedback">
+              <input type="text" name="address" ng-model="patient.address" placeholder="Address" class="form-control"></input>
+            </div>
+
+            <div class="modal-input form-group has-feedback">
+              <input type="text" masked="" ng-model="patient.phonenumber" data-inputmask="'mask': '(999) 999-9999'" placeholder="Phone number" class="form-control" />
+            </div>
+
+            <div class="modal-input form-group has-feedback">
+               <label class="control-label">Gender</label>
+               <div class="radio c-radio">
+                  <label>
+                     <input type="radio" name="gender" value='Male' checked="" ng-model='patient.gender'>
+                     <span class="fa fa-circle"></span>Male
+                  </label>
+               </div>
+               <div class="radio c-radio">
+                  <label>
+                     <input type="radio" name="gender" value='Female' ng-model='patient.gender'>
+                     <span class="fa fa-circle"></span>Female
+                  </label>
+               </div>
+            </div>             
+
+            <div ng-show="patientAuthMsg" class="alert alert-danger text-center">{{patientAuthMsg}}</div>
+            <div class="footer text-center">
+               <button id="add-bank-btn" ng-disabled="is_loading" type="submit" class="btn btn-primary">Add Patient &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" class="img-responsive" /></button>
+            </div>
+         </form>
+      </div>
+   </script>
+</h3>
+
+<div class="panel panel-default patient-list" ng-controller="PatientListController as plist" ng-init="plist.getPatients()">
+    <div class="panel-heading text-center" style="padding-top: 20px">
+        <img ng-show="is_loading" src="img/ajax-loader2.gif" class="text-center" style="width: 60px">
+        <!-- <span ng-show="addSuccess" class="alert text-center">Patient added successfully</span> -->
+    </div>
+    <div class="panel-body">
+        <table datatable="ng" dt-options="plist.dtOptions" dt-column-defs="plist.dtColumnDefs" class="row-border hover">
+            <thead>
+                <tr>
+                    <th>Case</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Last Update</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="patient in patients">
+                    <td ng-click="plist.goToDetail(patient.id, $index)">{{ patient.id }}</td>
+                    <td ng-click="plist.goToDetail(patient.id, $index)">{{ patient.first_name }}</td>
+                    <td ng-click="plist.goToDetail(patient.id, $index)">{{ patient.last_name }}</td>
+                    <td ng-click="plist.goToDetail(patient.id, $index)">{{ patient.gender }}</td>                
+                    <td ng-click="plist.goToDetail(patient.id, $index)">{{ patient.updated_at }}</td>
+                    <td>
+                        <button type="button" ng-click="plist.modifyPerson($index)"
+                                class="btn btn-sm btn-primary">
+                            <em class="fa icon-specimatch ico-moon"></em>
+                        </button>
+                        <button type="button" ng-click="plist.removePatient(patient.id)"
+                                class="btn btn-sm btn-danger">
+                            <em class="fa fa-trash-o"></em>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

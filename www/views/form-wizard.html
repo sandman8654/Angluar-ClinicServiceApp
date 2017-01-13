@@ -1,0 +1,629 @@
+<!--<h3>Form Wizards-->
+<!--</h3>-->
+<!-- START panel-->
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form form-wizard="" steps="4" novalidate="" ng-submit="alertSubmit()">
+            <div class="form-wizard wizard-horizontal">
+                <!-- START wizard steps indicator-->
+                <ol class="row">
+                    <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1)" class="col-md-3">
+                        <h4>Login</h4>
+                        <small class="text-muted">Duis volutpat nunc at ligula tincidunt non aliquam.</small>
+                    </li>
+                    <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2)" class="col-md-3">
+                        <h4>Profile</h4>
+                        <small class="text-muted">Nulla pharetra imperdiet sapien ac faucibus.</small>
+                    </li>
+                    <li id="payment-tab" ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3)" class="col-md-3">
+                        <h4>Payments</h4>
+                        <small class="text-muted">Sed elementum lorem dolor, id fermentum metus.</small>
+                    </li>
+                    <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4)" class="col-md-3">
+                        <h4>Team</h4>
+                        <small class="text-muted">Nullam sit amet magna vestibulum libero.</small>
+                    </li>
+                </ol>
+                <!-- END wizard steps indicator-->
+                <!-- START Wizard Step inputs -->
+
+                foo {{ test }}
+                <div ng-show="wizard.active(1)">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <!-- START row -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <div class="controls">
+                                        <input type="text" name="username" placeholder="Your nick here"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <div class="controls">
+                                        <input type="password" name="password" placeholder="Your password"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Retype Password</label>
+                                    <div class="controls">
+                                        <input type="password" name="password2" placeholder="Confirmed password"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END row -->
+                    </fieldset>
+                    <ul class="pager">
+                        <li class="next"><a href="#" ng-click="wizard.go(2)">Save <span>&rarr;</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END Wizard Step inputs -->
+                <!-- START Wizard Step inputs -->
+                <div ng-show="wizard.active(2)">
+                    <fieldset>
+                        <legend>Profile</legend>
+                        <!-- START row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="first-name" placeholder="John" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" name="last-name" placeholder="Snow" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END row -->
+                    </fieldset>
+                    <fieldset>
+                        <!-- START row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Photo ID</label><br/>
+                                    <img src="img/user/04.jpg" alt="Image"
+                                         class="media-object img-circle thumb64 user-photo">
+                                    <a href="#" ui-sref="app.form-imagecrop"><em
+                                            class="fa fa-plus-circle fa-4x add-user-photo"></em></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Specialty</label>
+                                    <select name="specialty" id="specialty-chooser" class="form-control">
+                                        <option value="medical-oncologist">Medical Oncologist</option>
+                                        <option value="">Surgeon</option>
+                                        <option value="">Radiologist</option>
+                                        <option value="">Pathologist</option>
+                                        <option value="">Office Manager</option>
+                                        <option value="">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END row -->
+                    </fieldset>
+                    <ul class="pager">
+
+                        <li class="next"><a href="#" ng-click="wizard.go(3)">Save <span>&rarr;</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END Wizard Step inputs -->
+                <!-- START Wizard Step inputs -->
+                <div ng-show="wizard.active(3)">
+                    <fieldset>
+                        <legend>Payments</legend>
+                        <!-- START row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Address</label>
+                                    <input type="text" class="form-control" placeholder=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">City</label>
+                                    <input type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">State</label>
+                                    <select name="specialty" id="specialty-chooser" class="form-control">
+                                        <option value="medical-oncologist">GA</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Zip Code</label>
+                                    <input type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Phone</label>
+                                    <input type="text" name="phone" placeholder="11-2345-6789" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    <input type="text" name="bank name" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Routing Number</label>
+                                    <input type="text" name="bank name" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    <input type="text" name="bank name" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Retype Account Number</label>
+                                    <input type="text" name="bank name" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="choose-w9">
+                                        <label for="">Signed W-9</label>
+                                        <input filestyle="" type="file" data-classbutton="btn btn-default" data-buttonText="Find file"
+                                               data-classinput="form-control" class="form-control "/>
+                                    </div>
+                                    <a class="download-form" href="#">download form</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END row -->
+                    </fieldset>
+                    <ul class="pager">
+                        <li class="next"><a href="#" ng-click="wizard.go(4)">Save <span>&rarr;</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END Wizard Step inputs -->
+                <!-- START Wizard Step inputs -->
+                <div ng-show="wizard.active(4)">
+                    <div ng-controller="DataTableController as table2">
+                        <form ng-submit="table2.addPerson()" class="form-inline">
+                            <table datatable="ng" dt-options="table2.dtOptions" dt-column-defs="table2.dtColumnDefs"
+                                   class="row-border hover">
+                                <thead>
+
+                                <tr>
+                                    <th>Specialty</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="member in table2.teamMembers">
+                                    <td ng-click="table2.goToDetail(member.id)">{{ member.specialty }}</td>
+                                    <td ng-click="table2.goToDetail(member.id)">{{ member.firstName }}</td>
+                                    <td ng-click="table2.goToDetail(member.id)">{{ member.lastName }}</td>
+                                    <td ng-click="table2.goToDetail(member.id)">{{ member.status }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn btn-primary"
+                                                ng-if="member.status === 'Invited'">
+                                            Re-send
+                                        </button>
+                                        <button type="button" class="btn btn btn-primary"
+                                                ng-if="member.status === 'Unidentified'">
+                                            Invite
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <!--<ul class="pager">-->
+                    <!--<li class="previous">-->
+                    <!--<a href="#" ng-click="wizard.go(3)">-->
+                    <!--<span>&larr; Previous</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
+                <!-- END Wizard Step inputs -->
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END panel -->
+<!-- START row-->
+<!--<div class="row">-->
+<!--<div class="col-lg-6">-->
+<!--&lt;!&ndash; START panel&ndash;&gt;-->
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">Form Wizard Vertical (no validation)</div>-->
+<!--<div class="panel-body">-->
+<!--<form form-wizard="" action="/" method="POST" steps="4">-->
+<!--<div class="form-wizard wizard-vertical">-->
+<!--&lt;!&ndash; START wizard steps indicator&ndash;&gt;-->
+<!--<ol>-->
+<!--<li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1)">-->
+<!--<h4 class="mb0">Login</h4>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2)">-->
+<!--<h4 class="mb0">Personal</h4>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3)">-->
+<!--<h4 class="mb0">Contact</h4>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4)">-->
+<!--<h4 class="mb0">Done!</h4>-->
+<!--</li>-->
+<!--</ol>-->
+<!--&lt;!&ndash; END wizard steps indicator&ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(1)">-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>Username</label>-->
+<!--<div class="controls">-->
+<!--<input type="text" name="username" placeholder="Your nick here" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password" placeholder="Your password" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Retype Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password2" placeholder="Confirmed password" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(2)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(2)">-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>First Name</label>-->
+<!--<input type="text" name="first-name" placeholder="John" class="form-control" />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Last Name</label>-->
+<!--<input type="text" name="last-name" placeholder="Snow" class="form-control" />-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(1)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(3)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(3)">-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>Email</label>-->
+<!--<input type="text" name="email" placeholder="john@snow.com" class="form-control" />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Phone</label>-->
+<!--<input type="text" name="phone" placeholder="11-2345-6789" class="form-control" />-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(2)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(4)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(4)">-->
+<!--<div class="jumbotron m0">-->
+<!--<h3 class="mt0">Done!</h3>-->
+<!--<p>In vulputate mattis ipsum vitae vehicula.</p>-->
+<!--<p class="m0">-->
+<!--<button type="button" class="btn btn-info">You can Proceed Now</button>-->
+<!--</p>-->
+<!--</div>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(3)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; END panel &ndash;&gt;-->
+<!--</div>-->
+<!--<div class="col-lg-6">-->
+<!--&lt;!&ndash; START panel&ndash;&gt;-->
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">Form Wizard No indicator (no validation)</div>-->
+<!--<div class="panel-body">-->
+<!--<form form-wizard="" action="/" method="POST" steps="4">-->
+<!--<div class="form-wizard">-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(1)">-->
+<!--<legend>1. Login</legend>-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>Username</label>-->
+<!--<div class="controls">-->
+<!--<input type="text" name="username" placeholder="Your nick here" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password" placeholder="Your password" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Retype Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password2" placeholder="Confirmed password" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(2)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(2)">-->
+<!--<legend>2. Personal</legend>-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>First Name</label>-->
+<!--<input type="text" name="first-name" placeholder="John" class="form-control" />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Last Name</label>-->
+<!--<input type="text" name="last-name" placeholder="Snow" class="form-control" />-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(1)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(3)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(3)">-->
+<!--<legend>3. Contact</legend>-->
+<!--<fieldset>-->
+<!--<div class="form-group">-->
+<!--<label>Email</label>-->
+<!--<input type="text" name="email" placeholder="john@snow.com" class="form-control" />-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Phone</label>-->
+<!--<input type="text" name="phone" placeholder="11-2345-6789" class="form-control" />-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(2)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(4)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div ng-show="wizard.active(4)">-->
+<!--<legend>4. Last Step</legend>-->
+<!--<div class="jumbotron">-->
+<!--<h3 class="mt0">Done!</h3>-->
+<!--<p>In vulputate mattis ipsum vitae vehicula.</p>-->
+<!--<p class="m0">-->
+<!--<button type="button" class="btn btn-info">You can Proceed Now</button>-->
+<!--</p>-->
+<!--</div>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(3)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; END panel &ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!-- END row-->
+<!-- START panel-->
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">Form Wizard Horizontal (with validation)</div>-->
+<!--<div class="panel-body">-->
+<!--<form action="/" method="POST" form-wizard="" validate-steps="true" validate-form="" steps="4">-->
+<!--<div class="form-wizard wizard-horizontal">-->
+<!--&lt;!&ndash; START wizard steps indicator&ndash;&gt;-->
+<!--<ol class="row">-->
+<!--<li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1)" class="col-md-3">-->
+<!--<h4>Login</h4>-->
+<!--<small class="text-muted">Duis volutpat nunc at ligula tincidunt non aliquam.</small>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2)" class="col-md-3">-->
+<!--<h4>Personal</h4>-->
+<!--<small class="text-muted">Nulla pharetra imperdiet sapien ac faucibus.</small>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3)" class="col-md-3">-->
+<!--<h4>Contact</h4>-->
+<!--<small class="text-muted">Sed elementum lorem dolor, id fermentum metus.</small>-->
+<!--</li>-->
+<!--<li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4)" class="col-md-3">-->
+<!--<h4>Done!</h4>-->
+<!--<small class="text-muted">Nullam sit amet magna vestibulum libero.</small>-->
+<!--</li>-->
+<!--</ol>-->
+<!--&lt;!&ndash; END wizard steps indicator&ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div id="step1" ng-show="wizard.active(1)">-->
+<!--<fieldset>-->
+<!--<legend>Login</legend>-->
+<!--&lt;!&ndash; START row &ndash;&gt;-->
+<!--<div class="row">-->
+<!--<div class="col-md-4">-->
+<!--<div class="form-group">-->
+<!--<label>Username</label>-->
+<!--<div class="controls">-->
+<!--<input type="text" name="username" data-parsley-group="step1" placeholder="Your nick here" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4">-->
+<!--<div class="form-group">-->
+<!--<label>Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password" data-parsley-group="step1" placeholder="Your password" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4">-->
+<!--<div class="form-group">-->
+<!--<label>Retype Password</label>-->
+<!--<div class="controls">-->
+<!--<input type="password" name="password2" data-parsley-group="step1" placeholder="Confirmed password" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; END row &ndash;&gt;-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(2)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div id="step2" ng-show="wizard.active(2)">-->
+<!--<fieldset>-->
+<!--<legend>Personal</legend>-->
+<!--&lt;!&ndash; START row &ndash;&gt;-->
+<!--<div class="row">-->
+<!--<div class="col-md-6">-->
+<!--<div class="form-group">-->
+<!--<label>First Name</label>-->
+<!--<input type="text" name="first-name" data-parsley-group="step2" placeholder="John" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--<div class="form-group">-->
+<!--<label>Last Name</label>-->
+<!--<input type="text" name="last-name" data-parsley-group="step2" placeholder="Snow" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; END row &ndash;&gt;-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(1)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(3)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div id="step3" ng-show="wizard.active(3)">-->
+<!--<fieldset>-->
+<!--<legend>Contact</legend>-->
+<!--&lt;!&ndash; START row &ndash;&gt;-->
+<!--<div class="row">-->
+<!--<div class="col-md-6">-->
+<!--<div class="form-group">-->
+<!--<label>Email</label>-->
+<!--<input type="text" name="email" data-parsley-group="step3" placeholder="john@snow.com" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--<div class="form-group">-->
+<!--<label>Phone</label>-->
+<!--<input type="text" name="phone" data-parsley-group="step3" placeholder="11-2345-6789" required="required" class="form-control" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; END row &ndash;&gt;-->
+<!--</fieldset>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(2)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="next"><a href="#" ng-click="wizard.go(4)">Next <span>&rarr;</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--&lt;!&ndash; START Wizard Step inputs &ndash;&gt;-->
+<!--<div id="step4" ng-show="wizard.active(4)">-->
+<!--<div class="jumbotron">-->
+<!--<h1>Done!</h1>-->
+<!--<p>In vulputate mattis ipsum vitae vehicula. Praesent at arcu non arcu convallis pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+<!--<p>-->
+<!--<button type="button" class="btn btn-info btn-lg">You can Proceed Now</button>-->
+<!--</p>-->
+<!--</div>-->
+<!--<ul class="pager">-->
+<!--<li class="previous">-->
+<!--<a href="#" ng-click="wizard.go(3)">-->
+<!--<span>&larr; Previous</span>-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; END Wizard Step inputs &ndash;&gt;-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!-- END panel -->

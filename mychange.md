@@ -1,6 +1,7 @@
-# ClinicServiceApp
+#Clinic-App
 #
+#AngluaJS - ClinicApps
 
-AngluarJS, SASS, bootstrap
+
 #
 This projcet is medical clinic web application.

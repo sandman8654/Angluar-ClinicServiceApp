@@ -1,0 +1,718 @@
+<h3>Case {{patient.id}}
+    <div class="pull-right">
+        <button ui-sref="app.specimatch" type="submit" class="btn btn-default">
+            Specimatch
+        </button>
+    </div>
+</h3>
+
+<div data-ng-init="getPatientDetail()">
+    <div class="list-group patient-detail" id="patient-details-page">
+        <a href="#" class="list-group-item">
+            <table class="wd-wide align-middle">
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="ph">
+                            <div class="img-detail">
+                                <img src="img/user/02.jpg" alt="Image" class="media-box-object img-circle thumb48"/>
+                            </div>
+                            <div class="status">
+                                <strong class="media-box-heading">{{patient.first_name}}  {{patient.last_name}}</strong><span> {{patient.gender}} | age {{age}}</span>
+                                <div class="text-muted">Diagnosis: {{latestDiagnosis.name}}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ph">
+                            <div class="text-muted">{{patient.city}}, {{patient.state}}</div>
+                            <div class="text-muted">{{patient.zipcode + patient.address}}</div>
+                        </div>
+                    </td>
+                    <td class="hidden-md hidden-lg">
+                        <div class="ph">
+                            <div class="pull-left img-detail hidden-xs hidden-sm">
+                                <img src="img/user/02.jpg" alt="Image" class="media-box-object img-circle thumb32"/>
+                            </div>
+                            <div class="pull-right hidden-sm">
+                                <strong class=""></span>{{patient.first_name}}  {{patient.last_name}}</strong>
+                                <div class="case-number text-muted">Case: {{patient.id}}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        <div class="ph">
+                            <div class="pull-left">
+                                <button type="button" ng-click="table2.modifyPerson($index)" class="btn btn-sm btn-primary">
+                                    <em class="fa icon-specimatch ico-moon"></em>
+                                </button>
+                                <button type="button" ng-click="table2.removePerson($index)" class="btn btn-sm btn-danger">
+                                    <em class="fa fa-trash-o"></em>
+                                </button>
+                            </div>
+                            <div class="pull-right">
+                                <div class="media-box-heading">Latest update</div>
+                                <small class="text-muted">{{patient.updated_at}}</small>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- START widget-->
+            <div class="panel widget">
+                <div class="panel-body">
+                    <div class="text-right text-muted">
+                        <em class="fa fa-gamepad fa-2x"></em>
+                    </div>
+                    <h3 class="mt0">Cancer therapy</h3>
+                    <p class="text-muted">Supporting text</p>
+                    <div class="progress progress-striped progress-xs">
+                        <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="70"
+                             class="progress-bar progress-bar-warning progress-60">
+                            <span class="sr-only">60% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END widget-->
+        </div>
+        <div class="col-lg-4">
+            <!-- START widget-->
+            <div class="panel widget">
+                <div class="panel-body">
+                    <div class="text-right text-muted">
+                        <em class="fa fa-coffee fa-2x"></em>
+                    </div>
+                    <h3 class="mt0">Case message</h3>
+                    <p class="text-muted">Supporting text</p>
+                    <div class="progress progress-striped progress-xs">
+                        <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                             class="progress-bar progress-bar-green progress-80">
+                            <span class="sr-only">80% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END widget-->
+        </div>
+        <div class="col-lg-4">
+            <!-- START widget-->
+            <div class="panel widget">
+                <div class="panel-body">
+                    <div class="text-right text-muted">
+                        <em class="fa fa-upload fa-2x"></em>
+                    </div>
+                    <h3 class="mt0">Genomic report</h3>
+                    <p class="text-muted">Supporting text</p>
+                    <div class="progress progress-striped progress-xs">
+                        <div role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                             class="progress-bar progress-bar-info progress-40">
+                            <span class="sr-only">40% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END widget-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <!-- START widget-->
+            <div class="panel widget bg-success">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-success-dark pv-lg">
+                        <em class="icon-share fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h3 m0 text-bold">Message</div>
+                        <div class="text-uppercase">New connections</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <!-- START widget-->
+            <div class="panel widget bg-danger">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-danger-dark pv-lg">
+                        <em class="icon-star fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h3 m0 text-bold">Email</div>
+                        <div class="text-uppercase">Ratings received</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <!-- START widget-->
+            <div class="panel widget bg-warning">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-warning-dark pv-lg">
+                        <em class="icon-trophy fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h3 m0 text-bold">Phone</div>
+                        <div class="text-uppercase">Achievements</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 patient-detail">
+            <div id="panelDemo3" class="panel panel-default">
+                <div ng-class="{'panel-heading-collapsed':panelDemo3}" class="panel-heading">HEALTH RECORD
+                    <paneltool tool-collapse="tool-collapse" ng-init="panelDemo3=false" class="collapse"></paneltool>
+                </div>
+                <!-- .panel-wrapper is the element to be collapsed-->
+                <div uib-collapse="panelDemo3" class="panel-wrapper">
+                    <div class="panel-body">
+                        <h5>Demographics</h5>
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <!--<tr>-->
+                            <!--<th>Last Name</th>-->
+                            <!--<th>Username</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <tbody>
+                            <tr>
+                                <td class="first">Name</td>
+                                <td>{{patient.first_name}}  {{patient.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>DOB</td>
+                                <td>{{patient.date_of_birth}}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>{{patient.gender}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{patient.home_phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>
+                                    {{patient.city}}, {{patient.state}} <br/>
+                                    {{patient.address}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><a href="mailto:">{{patient.email}}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Date added</td>
+                                <td>--</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h5>
+                            Ongoing problems
+                            <button type="button" class="pull-right btn btn-green"
+                                    ng-click="">
+                                <span class=""><em class="fa fa-plus"></em></span>
+                                Add Problem
+                                <!--goes to specimatch results for this patient-->
+                            </button>
+                        </h5>
+                        <table class="table table-striped table-bordered table-hover">
+                            <tbody>
+                            <tr>
+                                <th>Problem</th>
+                                <th>ICD-10-CM</th>
+                                <th>ICD-9-CM</th>
+                                <!-- <th>SNOMED</th> -->
+                                <th>Diagnosis Date</th>
+                                <th>Status</th>
+                                <!-- <th>Notes</th> -->
+                            </tr>
+                            <tr ng-repeat="diagnosis in diagnosises">
+                                <td>{{diagnosis.name}}</td>
+                                <td>{{diagnosis.icd_version === 10 ? diagnosis.icd_code : "--"}}</td>
+                                <td>{{diagnosis.icd_version === 9 ? diagnosis.icd_code : "--"}}</td>
+                                <!-- <td></td> -->
+                                <td>{{diagnosis.date_diagnosis}}</td>
+                                <td>{{diagnosis.status}}</td>
+                                <!-- <td>{{diagnosis.notes}}</td> -->
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h5>
+                            Allergies
+                            <button type="button" class="pull-right btn btn-green"
+                                    ng-click="">
+                                <span class=""><em class="fa fa-plus"></em></span>
+                                Add allergy
+                                <!--goes to specimatch results for this patient-->
+                            </button>
+                        </h5>
+                        <table class="table table-striped table-bordered table-hover">
+
+                            <tbody>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Reaction</th>
+                                <th>RxNorm Code</th>
+                                <th>Notes</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h5>
+                            Active medications
+                            <button type="button" class="pull-right btn btn-green"
+                                    ng-click="">
+                                <span class=""><em class="fa fa-plus"></em></span>
+                                Add medication
+                                <!--goes to specimatch results for this patient-->
+                            </button>
+                        </h5>
+                        <table class="table table-striped table-bordered table-hover">
+
+                            <tbody>
+                            <tr>
+                                <th>Medication</th>
+                                <th>RxNorm</th>
+                                <th>Strength</th>
+                                <th>SIG</th>
+                                <th>SIG Note</th>
+                                <th>Dispense</th>
+                                <th>Refills</th>
+                                <th>Order Status</th>
+                                <th>Date</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h5>
+                            Lab results
+                            <button type="button" class="pull-right btn btn-green"
+                                    ng-click="">
+                                <span class=""><em class="fa fa-plus"></em></span>
+                                Manual entry
+                                <!--goes to specimatch results for this patient-->
+                            </button>
+                        </h5>
+                        <table class="table table-striped table-bordered table-hover">
+
+                            <tbody>
+                            <tr>
+                                <th>LOINC Code</th>
+                                <th>Lab Description</th>
+                                <th>Date</th>
+                                <th>Sign-Off</th>
+                                <th>Status</th>
+                                <th>Result</th>
+                                <th>Comments</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <br/>
+                        <div>
+                            <h5>Import structured clinical record</h5>
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Type of record:</label>
+                                    <div class="col-lg-4">
+                                        <select name="account" class="form-control">
+                                            <option>Option 1</option>
+                                            <option>Option 2</option>
+                                            <option>Option 3</option>
+                                            <option>Option 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">File to upload (*.xml):</label>
+                                    <div class="col-lg-4">
+                                        <input type="file">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-sm btn-default">Import file</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div>
+                            <h5>Export structured clinical record</h5>
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-sm btn-default">Export file</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="panelDemo4" class="panel panel-default">
+                <div ng-class="{'panel-heading-collapsed':panelDemo4}" class="panel-heading">CARE TIMELINE
+                    <paneltool tool-collapse="tool-collapse" ng-init="panelDemo4=false" class="collapse"></paneltool>
+                </div>
+                <!-- .panel-wrapper is the element to be collapsed-->
+                <div uib-collapse="panelDemo4" class="panel-wrapper">
+                    <div class="panel-body">
+                        <p>Initially collapsed panel uses <code>paneltool(tool-collapse, tool-dismiss,
+                            ng-init="panelDemo3=true")</code>
+                        </p>
+                    </div>
+                    <div class="panel-footer">Panel Footer</div>
+                </div>
+            </div>
+            <div class="panel">
+                <uib-tabset justified="true">
+                    <uib-tab>
+                        <uib-tab-heading>
+                            <em class="fa fa-tasks fa-fw"></em>Tasks
+                        </uib-tab-heading>
+                        <div>
+                            <!-- START list group-->
+                            <div class="list-group mb0">
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">just now</span>
+                                    <em class="fa fa-fw fa-calendar mr"></em>Calendar updated</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">4 minutes ago</span>
+                                    <em class="fa fa-fw fa-comment mr"></em>Commented on a post</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">23 minutes ago</span>
+                                    <em class="fa fa-fw fa-truck mr"></em>Order 392 shipped</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">46 minutes ago</span>
+                                    <em class="fa fa-fw fa-money mr"></em>Invoice 653 has been paid</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">1 hour ago</span>
+                                    <em class="fa fa-fw fa-user mr"></em>A new user has been added</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">2 hours ago</span>
+                                    <em class="fa fa-fw fa-check mr"></em>Completed task: "pick up dry cleaning"</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">yesterday</span>
+                                    <em class="fa fa-fw fa-globe mr"></em>Saved the world</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">two days ago</span>
+                                    <em class="fa fa-fw fa-check mr"></em>Completed task: "fix error on sales page"</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="label label-purple pull-right">two days ago</span>
+                                    <em class="fa fa-fw fa-check mr"></em>Completed task: "fix error on sales page"</a>
+                            </div>
+                            <!-- END list group-->
+                            <div class="panel-footer text-right"><a href="#" class="btn btn-default btn-sm">View All
+                                Activity</a>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab>
+                        <uib-tab-heading>
+                            <em class="fa fa-file-text-o fa-fw"></em>Files
+                        </uib-tab-heading>
+                        <div>
+						<!-- START table responsive-->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>File Type</th>
+                                    <th>File Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="file in patientFiles">
+                                    <td ng-bind="file.date | date:'MM/dd/yyyy'"></td>
+                                    <td ng-bind="file.file_type"></td>
+                                    <td>
+										<a ng-if="file.file_type == 'dcm'" ui-sref="dicom-viewer({dicom_id: file.dicom_id})" target="_blank" ng-bind="file.file_name"></a>
+										
+										<a ng-if="file.file_type == 'png' || file.file_type == 'jpg' || file.file_type == 'jpeg'" href="{{file.file_url}}" target="_blank" ng-bind="file.file_name"></a>
+										
+										<a ng-if="file.file_type != 'png' && file.file_type != 'jpg' && file.file_type != 'jpeg' && file.file_type != 'dcm'" ng-bind="file.file_name"></a>
+									</td>
+                                </tr>
+                                <tr ng-if="patientFiles.length == 0">
+                                    <td colspan="3">No Files Found</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END table responsive-->
+                        <div class="panel-footer">
+							<div class="row">
+								<div class="col-lg-4">
+									<a class="btn btn-default btn-sm" data-ng-click="fileTypeConfirm()">Upload File</a>
+								</div>
+								<div class="col-lg-6"></div>
+								<div class="col-lg-2 text-right">
+									<uib-pagination total-items="filesCount" ng-model="pageNumber" max-size="maxSize" class="pagination-sm" items-per-page="filesPerPage" ng-change="filesPagination(pageNumber)" direction-links="false" boundary-links="true" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+								</div>
+							</div>
+						</div>
+                        <div >
+							
+                        </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+            <div id="specimatch" class="panel panel-default">
+                <div ng-class="{'panel-heading-collapsed':specimatch}" class="panel-heading">SPECIMATCH
+                    <paneltool tool-collapse="tool-collapse" ng-init="specimatch=false" class="collapse"></paneltool>
+                </div>
+                <!-- .panel-wrapper is the element to be collapsed-->
+                <div uib-collapse="specimatch" class="panel-wrapper">
+                    <div class="" ng-controller="SpecimatchController as specimatch">
+                        <div class="pull-right only-show-wrapper">
+                            <span class="only-show">Only show:</span>
+                            <label class="checkbox-inline c-checkbox">
+                                <input id="inlineCheckbox10" type="checkbox" checked="checked" value="option2"/>
+                                <span class="fa fa-check"></span>trials</label>
+                            <label class="checkbox-inline c-checkbox">
+                                <input id="inlineCheckbox20" type="checkbox" checked="checked" value="option3"/>
+                                <span class="fa fa-check"></span>drugs</label>
+                            <label class="checkbox-inline c-checkbox">
+                                <input id="inlineCheckbox30" type="checkbox" checked="checked" value="option3"/>
+                                <span class="fa fa-check"></span>content</label>
+                        </div>
+                        <div class="panel-body">
+
+                            <!-- START panel-->
+                            <div class="panel panel-default search-results">
+                                <div class="panel-heading">Saved Results
+                                    <paneltool tool-refresh="traditional"></paneltool>
+                                </div>
+                                <!-- START table-responsive-->
+                                <div class="">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th check-all="check-all">
+                                                <div data-toggle="tooltip" data-title="Check All"
+                                                     class="checkbox c-checkbox">
+                                                    <label>
+                                                        <input type="checkbox"/>
+                                                        <span class="fa fa-check"></span>
+                                                    </label>
+                                                </div>
+                                            </th>
+                                            <th>Select all
+                                                <button type="button" class="pull-right btn btn-default"
+                                                        ng-click="specimatch.getCities()">Specimatch
+                                                    <!--goes to specimatch results for this patient-->
+                                                </button>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox c-checkbox">
+                                                    <label>
+                                                        <input type="checkbox"/>
+                                                        <span class="fa fa-check"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media-box">
+                                                    <a href="#" ui-sref="app.specimatch-results"
+                                                       class="pull-left icon-image">
+                                                        <img src="img/icons_trials_1.png" alt=""
+                                                             class="media-box-object img-responsive"/>
+                                                    </a>
+                                                    <div class="media-box-body">
+                                                        <!--<div class="pull-right btn btn-info btn-sm">View</div>-->
+                                                        <h4 class="media-box-heading">Trials</h4>
+                                                        <small class="text-muted">Category1, Category2</small>
+                                                        <p class="hidden-xs">Sed gravida auctor odio. Sed viverra rutrum
+                                                            hendrerit. Praesent dapibus justo
+                                                            dolor. Suspendisse rhoncus consectetur eros vehicula
+                                                            accumsan.</p>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit.
+                                                    Praesent dapibus justo
+                                                    dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox c-checkbox">
+                                                    <label>
+                                                        <input type="checkbox"/>
+                                                        <span class="fa fa-check"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media-box">
+                                                    <a href="#" ui-sref="app.specimatch-results"
+                                                       class="pull-left icon-image">
+                                                        <img src="img/icons_drugs.png" alt=""
+                                                             class="media-box-object img-responsive"/>
+                                                    </a>
+                                                    <div class="media-box-body">
+                                                        <!--<div class="pull-right btn btn-info btn-sm">View</div>-->
+                                                        <h4 class="media-box-heading">Drugs</h4>
+                                                        <small class="text-muted">Category1, Category2</small>
+                                                        <p class="hidden-xs">Sed gravida auctor odio. Sed viverra rutrum
+                                                            hendrerit. Praesent dapibus justo
+                                                            dolor. Suspendisse rhoncus consectetur eros vehicula
+                                                            accumsan.</p>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit.
+                                                    Praesent dapibus justo
+                                                    dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox c-checkbox">
+                                                    <label>
+                                                        <input type="checkbox"/>
+                                                        <span class="fa fa-check"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media-box">
+                                                    <a href="#" ui-sref="app.specimatch-results"
+                                                       class="pull-left icon-image">
+                                                        <img src="img/icons_content.png" alt=""
+                                                             class="media-box-object img-responsive"/>
+                                                    </a>
+                                                    <div class="media-box-body">
+                                                        <!--<div class="pull-right btn btn-info btn-sm">View</div>-->
+                                                        <h4 class="media-box-heading">Content</h4>
+                                                        <small class="text-muted">Category1, Category2</small>
+                                                        <p class="hidden-xs">Sed gravida auctor odio. Sed viverra rutrum
+                                                            hendrerit. Praesent dapibus justo
+                                                            dolor. Suspendisse rhoncus consectetur eros vehicula
+                                                            accumsan.</p>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit.
+                                                    Praesent dapibus justo
+                                                    dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END table-responsive-->
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <button class="btn btn-sm btn-default">Send to conference</button>
+                                            <!--remove selected items-->
+                                            <button type="button" ng-click="" class="btn btn-sm btn-danger">
+                                                <em class="fa fa-trash-o"></em>
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-6"></div>
+                                        <div class="col-lg-2 text-right">
+                                            <ul class="pagination pagination-sm">
+                                                <li class="active"><a href="#">1</a>
+                                                </li>
+                                                <li><a href="#">2</a>
+                                                </li>
+                                                <li><a href="#">3</a>
+                                                </li>
+                                                <li><a href="#">»</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END panel-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="/uploadDicomModal.html">
+	
+	 <div class="modal-header">
+		<button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+		<h4 id="myModalLabel" style="padding-top: 0px;" class="text-center modal-title">Box Dicom Import</h4>
+	 </div>
+	 	 <div class="dicomloader" ng-show="showDicomLoader"><img src="img/ajax-loader1.gif" alt="" class="media-box-object img-responsive"/></div>
+
+	 <div class="modal-body modal-inner-div sdf" id="my-container">
+		
+		 <script type="text/javascript">
+			$(function () {
+				box.dicom.createImportWidget('my-container', {
+					'accessToken': angular.element(document.getElementById('patient-details-page')).scope().accessToken,
+					'folderId': angular.element(document.getElementById('patient-details-page')).scope().boxFolderId
+				});
+			});
+       </script>
+	 </div>
+</script>
+
+<script type="text/ng-template" id="/fileTypeModal.html">
+	
+	 <div class="modal-header">
+		<button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+		<h4 style="padding-top: 0px;" class="text-center modal-title">Select file type to upload</h4>
+	 </div>
+	 
+	 <div class="modal-body modal-inner-div">
+		 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+		<div style="margin: 10px 0px; text-align: center;">
+			<a class="btn btn-default btn-sm" data-ng-click="uploadFilesPopup()">DICOM File</a>
+			<div class="btn btn-default btn-sm" ngf-select="uploadFilesToBox($file)">Other Files </div>
+		</div>
+	 </div>	
+	 <div class="dicomloader" ng-show="showNonDicomLoader"><img src="img/ajax-loader1.gif" alt="" class="media-box-object img-responsive"/></div> 
+</script>

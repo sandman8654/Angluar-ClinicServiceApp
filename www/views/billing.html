@@ -1,0 +1,295 @@
+<h3>
+    <!-- START Language list-->
+    <div class="pull-right">
+        <a href="#" ui-sref="app.form-wizard"><button type="button" class="btn btn-default">Edit profile
+        </button></a>
+    </div>
+    <!-- END Language list    -->
+    Payments
+</h3>
+<div class="row">
+    <div class="col-lg-4">
+        <!-- START List group-->
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row row-table pv-lg">
+                    <div class="col-xs-6">
+                        <p class="m0 lead">1204</p>
+                        <p class="m0">
+                            <small>July transactions</small>
+                        </p>
+                    </div>
+                    <div class="col-xs-6 text-center">
+                        <div sparkline="" data-bar-color="{{colorByName('info')}}" data-height="60" data-bar-width="10"
+                             data-bar-spacing="6" data-chart-range-min="0" values="3,6,7,8,4,5"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row row-table pv-lg">
+                    <div class="col-xs-6">
+                        <p class="m0 lead">$ 3,200.00</p>
+                        <p class="m0">
+                            <small>July payments</small>
+                        </p>
+                    </div>
+                    <div class="col-xs-6 text-center">
+                        <div sparkline="" data-type="line" data-height="60" data-width="80%" data-line-width="2"
+                             data-line-color="{{colorByName('purple')}}" data-chart-range-min="0" data-spot-color="#888"
+                             data-min-spot-color="{{colorByName('purple')}}"
+                             data-max-spot-color="{{colorByName('purple')}}"
+                             data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="3"
+                             values="7,3,4,7,5,9,4,4,7,5,9,6,4" data-resize="true"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row row-table pv-lg">
+                    <div class="col-xs-6">
+                        <p class="m0 lead">67</p>
+                        <p class="m0">
+                            <small>July payments</small>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href="#" uib-tooltip="Katie">
+                                    <img src="img/user/02.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" uib-tooltip="Cody">
+                                    <img src="img/user/01.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" uib-tooltip="Tamara">
+                                    <img src="img/user/03.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" uib-tooltip="Gene">
+                                    <img src="img/user/04.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" uib-tooltip="Marsha">
+                                    <img src="img/user/04.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" uib-tooltip="Robin">
+                                    <img src="img/user/09.jpg" alt="Follower"
+                                         class="img-responsive img-circle thumb24"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- END List group-->
+    </div>
+    <div class="col-lg-8">
+        <!-- START bar chart-->
+        <div id="panelChart3" class="panel">
+            <div class="panel-heading">
+                <!-- START button group-->
+                <div uib-dropdown="dropdown2" class="pull-right btn-group">
+                    <button type="button" class="btn btn-sm">Monthly</button>
+                    <ul role="menu" class="dropdown-menu fadeInLeft animated">
+                        <li><a href="#">Daily</a>
+                        </li>
+                        <li><a href="#">Monthly</a>
+                        </li>
+                        <li><a href="#">Yearly</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END button group-->
+                <div class="panel-title">Payment status</div>
+            </div>
+            <div uib-collapse="panelChart3" class="panel-wrapper">
+                <div class="panel-body">
+                    <flot src="'server/chart/barstackedv2.json'" options="billing.barStackedOptions"
+                          height="250px"></flot>
+                </div>
+            </div>
+        </div>
+        <!-- END bar chart-->
+    </div>
+</div>
+<div class="unwrap mv-lg">
+    <!-- START chart-->
+    <div id="panelChart9" class="panel">
+        <div class="panel-heading">
+            <!-- START button group-->
+            <div uib-dropdown="dropdown1" class="pull-right btn-group">
+                <button type="button" class="btn btn-sm">All time</button>
+                <ul role="menu" class="dropdown-menu fadeInLeft animated">
+                    <li><a href="#">Daily</a>
+                    </li>
+                    <li><a href="#">Monthly</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#">All time</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END button group-->
+            <div class="panel-title">Patient conversion</div>
+        </div>
+        <div uib-collapse="panelChart9" class="panel-wrapper">
+            <div class="panel-body">
+                <flot src="'server/chart/splinev2.json'" options="billing.splineOptions" height="300px"></flot>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-6 text-center">
+                        <p>Total invites</p>
+                        <div class="h1">25</div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 text-center">
+                        <p>Total sold</p>
+                        <div class="h1">85</div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 text-center">
+                        <p>Total transactions</p>
+                        <div class="h1">380</div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 text-center">
+                        <p>Total paid</p>
+                        <div class="h1">$ 10,000.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END chart-->
+    <div class="panel">
+        <uib-tabset justified="true">
+            <uib-tab>
+                <uib-tab-heading>
+                    <em class="fa fa-clock fa-fw"></em>Pending transactions
+                </uib-tab-heading>
+                <div>
+                    <!-- START list group-->
+                    <div class="list-group mb0">
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">just now</span>
+                            <em class="fa fa-fw fa-calendar mr"></em>Calendar updated</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">4 minutes ago</span>
+                            <em class="fa fa-fw fa-comment mr"></em>Commented on a post</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">23 minutes ago</span>
+                            <em class="fa fa-fw fa-truck mr"></em>Order 392 shipped</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">46 minutes ago</span>
+                            <em class="fa fa-fw fa-money mr"></em>Invoice 653 has been paid</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">1 hour ago</span>
+                            <em class="fa fa-fw fa-user mr"></em>A new user has been added</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">2 hours ago</span>
+                            <em class="fa fa-fw fa-check mr"></em>Completed task: "pick up dry cleaning"</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">yesterday</span>
+                            <em class="fa fa-fw fa-globe mr"></em>Saved the world</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">two days ago</span>
+                            <em class="fa fa-fw fa-check mr"></em>Completed task: "fix error on sales page"</a>
+                        <a href="#" class="list-group-item">
+                            <span class="label label-purple pull-right">two days ago</span>
+                            <em class="fa fa-fw fa-check mr"></em>Completed task: "fix error on sales page"</a>
+                    </div>
+                    <!-- END list group-->
+                    <div class="panel-footer text-right"><a href="#" class="btn btn-default btn-sm">View All
+                        Activity</a>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab>
+                <uib-tab-heading>
+                    <em class="fa fa-money fa-fw"></em>Paid transactions
+                </uib-tab-heading>
+                <div>
+                    <!-- START table responsive-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Order Date</th>
+                                <th>Order Time</th>
+                                <th>Amount (USD)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>3326</td>
+                                <td>10/21/2013</td>
+                                <td>3:29 PM</td>
+                                <td>$321.33</td>
+                            </tr>
+                            <tr>
+                                <td>3325</td>
+                                <td>10/21/2013</td>
+                                <td>3:20 PM</td>
+                                <td>$234.34</td>
+                            </tr>
+                            <tr>
+                                <td>3324</td>
+                                <td>10/21/2013</td>
+                                <td>3:03 PM</td>
+                                <td>$724.17</td>
+                            </tr>
+                            <tr>
+                                <td>3323</td>
+                                <td>10/21/2013</td>
+                                <td>3:00 PM</td>
+                                <td>$23.71</td>
+                            </tr>
+                            <tr>
+                                <td>3322</td>
+                                <td>10/21/2013</td>
+                                <td>2:49 PM</td>
+                                <td>$8345.23</td>
+                            </tr>
+                            <tr>
+                                <td>3321</td>
+                                <td>10/21/2013</td>
+                                <td>2:23 PM</td>
+                                <td>$245.12</td>
+                            </tr>
+                            <tr>
+                                <td>3320</td>
+                                <td>10/21/2013</td>
+                                <td>2:15 PM</td>
+                                <td>$5663.54</td>
+                            </tr>
+                            <tr>
+                                <td>3319</td>
+                                <td>10/21/2013</td>
+                                <td>2:13 PM</td>
+                                <td>$943.45</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END table responsive-->
+                    <div class="panel-footer text-right"><a href="#" class="btn btn-default btn-sm">View All
+                        Transactions</a>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>
+

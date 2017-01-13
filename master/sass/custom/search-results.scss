@@ -1,0 +1,95 @@
+.search-results {
+  h1, h2, h3, h4, h5, h6 {
+    color: #656565;
+  }
+  .header-title {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+  .main-detail {
+    font-size: 1.4em;
+    color: $body-text;
+  }
+  .main-panel {
+    .btn-group {
+      margin-top: -40px;
+    }
+    .panel {
+      &.panel-flat {
+        margin-bottom: 12px;
+      }
+      .title {
+        text-transform: uppercase;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      ul {
+        margin-left:-20px;
+        li {
+          list-style-type: none;
+        }
+      }
+    }
+  }
+  .study-info {
+    margin-top: 10px;
+    padding: 0;
+    .panel-heading {
+      text-transform: uppercase;
+      font-size: 1.3em;
+      color: #656565;
+      .fa {
+        font-size: 0.8em;
+      }
+    }
+  }
+  .icon-image {
+    margin-right: 10px;
+    padding: 10px 10px 10px 0;
+    display: block;
+    border-right: 1px solid $gray;
+    box-sizing: border-box;
+    width: 40%;
+    @media (min-width: 768px) {
+      width: 85px;
+    }
+    image {
+      width: 100%;
+    }
+  }
+  .media-box-body {
+    padding: 5px 0 10px;
+    .media-box-heading {
+      margin: 0;
+    }
+  }
+  .table {
+    border: none;
+    & > tbody > tr > td {
+      vertical-align: top;
+      border: none;
+      ul {
+        margin-left: -40px !important;
+      }
+    }
+    .first {
+      width: 30%;
+    }
+  }
+  .results-sidebar {
+    h4 {
+      margin-bottom: 0;
+    }
+    .panel-body {
+      padding-top: 0;
+      padding-left: 35px;
+    }
+  }
+}
+.ng-binding.ng-scope.odd {
+    padding: 10px;
+}
+
+.ng-binding.ng-scope.even {
+    padding: 10px;
+}

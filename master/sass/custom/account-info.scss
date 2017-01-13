@@ -1,0 +1,67 @@
+#account-panel {
+	padding-top: 100px;
+}
+
+#loadingbar {
+	display: inline;
+    width: 20px;
+}
+
+.modal-input.form-group.has-feedback {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+.modal-input.form-group.has-feedback .form-control {
+	padding-right: 15px;
+}
+
+.modal-body.ng-scope {
+    background-color: #f5f5f7;
+}
+
+.modal-input.form-group.has-feedback input.form-control {
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-user-select: text;
+    background: #fff none repeat scroll 0 0;
+    border-color: #b5b5b6 #cececf #dededf;
+    border-image: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(124, 124, 127, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.7), 0 0 4px rgba(86, 149, 219, 0);
+    box-sizing: border-box;
+    color: black;
+    font-family: "Helvetica Neue","Helvetica",Arial,sans-serif;
+    font-size: 15px;
+    
+}
+
+#stripe-account-email::-webkit-input-placeholder { 
+    color:    #757575;
+}
+#stripe-account-email:-moz-placeholder { 
+   color:    #757575;
+   opacity:  1;
+}
+#stripe-account-email::-moz-placeholder { 
+   color:    #757575;
+   opacity:  1;
+}
+#stripe-account-email:-ms-input-placeholder { 
+   color:    #757575;
+}
+
+.text-center.modal-title {
+    color: black;
+    padding-top: 50px;
+}
+
+.modal-header.ng-scope {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}

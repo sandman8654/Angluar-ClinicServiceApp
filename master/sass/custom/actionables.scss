@@ -1,0 +1,21 @@
+.actionables {
+  .media-box-body {
+    //padding-top: 10px;
+    font-size: 1.1em;
+    .text-muted {
+      font-size: 1em;
+    }
+    .circle-unread {
+      display: block;
+      margin: 4px 0 0 7px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  &.latest-files {
+    .media-box-body {
+      padding-top: 10px;
+    }
+  }
+
+}

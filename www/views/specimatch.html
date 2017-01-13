@@ -1,0 +1,174 @@
+<h3>Specimatch</h3>
+<div class="row specimatch" ng-controller="SpecimatchController as specimatch">
+    <div class="col-lg-9">
+        <div class="form-group mb-xl">
+            <input type="text" placeholder="Search by keyword" class="form-control mb" ng-model="specimatch.searchValue" />
+            <div class="clearfix">
+                <button type="button" class="pull-left btn btn-default" ng-click="specimatch.searchProducts()">Search</button>
+                <div class="pull-right">
+                    <span class="only-show">Only show:</span>
+                    <!--<label class="checkbox-inline c-checkbox">-->
+                    <!--<input id="inlineCheckbox10" type="checkbox" checked="checked" value="option1"/>-->
+                    <!--<span class="fa fa-check"></span>treatments</label>-->
+                    <label class="checkbox-inline c-checkbox">
+                        <input id="inlineCheckbox10" type="checkbox"  value="option2" ng-model="specimatch.clinicalTrial"/>
+                        <span class="fa fa-check"></span>trials</label>
+                    <label class="checkbox-inline c-checkbox">
+                        <input id="inlineCheckbox20" type="checkbox"  value="option3" ng-model="specimatch.drugs" />
+                        <span class="fa fa-check"></span>drugs</label>
+                    <!--
+                    <label class="checkbox-inline c-checkbox">
+                        <input id="inlineCheckbox30" type="checkbox" checked="checked" value="option3"/>
+                        <span class="fa fa-check"></span>content</label>
+-->
+                </div>
+            </div>
+        </div>
+        <!-- START panel-->
+        <div class="panel panel-default search-results" ng-if="specimatch.hasResults">
+            <div class="panel-heading">Search Results
+                <paneltool tool-refresh="traditional" ng-click="specimatch.searchProducts()"></paneltool>
+            </div>
+            <!-- START table-responsive-->
+            <div class="">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th check-all="check-all">
+                            <div data-toggle="tooltip" data-title="Check All" class="checkbox c-checkbox">
+                                <label>
+                                    <input type="checkbox"/>
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </th>
+                        <th>Save for review</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="product in specimatch.products">
+                        <td>
+                            <div class="checkbox c-checkbox">
+                                <label>
+                                    <input type="checkbox"/>
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </td>
+
+                        <td ng-if='product.recordType == "clinicalTrials"' ui-sref="app.specimatch-results({p_type:product.recordType, p_id:product._id })">
+                            <div class="media-box">
+                                <a href="#"  class="pull-left icon-image">
+                                    <img ng-if="product.ProtocolPhase" src="img/icons_trials_{{product.ProtocolPhase}}.png" alt="" class="media-box-object img-responsive" />
+                                </a>
+                                <div class="media-box-body">
+                                    <!--<div class="pull-right btn btn-info btn-sm">View</div>-->
+                                    <h4 class="media-box-heading" ng-bind="product.IDInfo[0].NCTID + ':' + product.OfficialTitle"></h4>
+                                    <small class="text-muted" ng-bind="(product.Sponsors[0].LeadSponsor) +' '+ (product.Sponsors[0].Collaborator[0]._ ? ' , ' +product.Sponsors[0].Collaborator[0]._ : '')"></small>
+                                    <p class="hidden-xs" title="{{product.BriefSummary[0].Para.substring(product.BriefSummary[0].Para.indexOf(',')+1)}}">{{product.BriefSummary[0].Para.substring(product.BriefSummary[0].Para.indexOf(',')+1) | limitTo: 250}}
+                                        <span ng-if="product.BriefSummary[0].Para.substring(product.BriefSummary[0].Para.indexOf(',')+1).length > 250">&hellip;</span></p>
+                                </div>
+                            </div>
+                            <br/>
+                            <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit. Praesent dapibus justo dolor. varun nayyar rhoncus consectetur eros vehicula accumsan.</p>
+                        </td>
+                        <td ng-if='product.recordType == "drugs"' ui-sref="app.specimatch-results({p_type:product.recordType, p_id:product._id })">
+                            <div class="media-box">
+                                <a href="#"  class="pull-left icon-image">
+                                    <img src="img/icons_drugs.png" alt="" class="media-box-object img-responsive" />
+                                </a>
+                                <div class="media-box-body">
+                                    <!--<div class="pull-right btn btn-info btn-sm">View</div>-->
+                                    <h4 class="media-box-heading" ng-bind="product.DrugInfoTitle"></h4>
+                                    <small class="text-muted" ng-bind="product.DrugInfoMetaData[0].USBrandNames[0].USBrandName"></small>
+                                    <p class="hidden-xs" ng-bind="product.DrugInfoMetaData[0].DrugInfoDescription"></p>
+                                </div>
+                            </div>
+                            <br/>
+                            <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit. Praesent dapibus justo dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                        </td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td>
+                            <div class="checkbox c-checkbox">
+                                <label>
+                                <input type="checkbox"/>
+                                <span class="fa fa-check"></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media-box">
+                                <a href="#" ui-sref="app.specimatch-results" class="pull-left icon-image">
+                                    <img src="img/icons_content.png" alt="" class="media-box-object img-responsive" />
+                                </a>
+                                <div class="media-box-body">
+                                    <!--<div class="pull-right btn btn-info btn-sm">View</div>
+                                    <h4 class="media-box-heading">Product 4</h4>
+                                    <small class="text-muted">Category1, Category2</small>
+                                    <p class="hidden-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit. Praesent dapibus justo dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                                </div>
+                            </div>
+                            <br/>
+                            <p class="visible-xs">Sed gravida auctor odio. Sed viverra rutrum hendrerit. Praesent dapibus justo dolor. Suspendisse rhoncus consectetur eros vehicula accumsan.</p>
+                        </td>
+                    </tr>
+-->
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- END table-responsive-->
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <button class="btn btn-sm btn-default">Save</button>
+                    </div>
+                    <div class="col-lg-6 text-right pull-right">
+                        <uib-pagination total-items="specimatch.totalCount" ng-model="specimatch.pageNumber" max-size="specimatch.maxSize" class="pagination-sm" items-per-page="specimatch.productsPerPage" ng-change="specimatch.pagination(specimatch.pageNumber)" direction-links="false" boundary-links="true" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                        <!--
+                        <ul class="pagination pagination-sm">
+                            <li class="active"><a href="#">1</a>
+                            </li>
+                            <li><a href="#">2</a>
+                            </li>
+                            <li><a href="#">3</a>
+                            </li>
+                            <li><a href="#">»</a>
+                            </li>
+                        </ul>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END panel-->
+
+    </div>
+    <div class="col-lg-3">
+        <h3 class="m0 pb-lg">Match to:</h3>
+        <div class="form-group mb-xl">
+            <label class="control-label mb">Patient name</label>
+            <br/>
+            <select chosen="" ng-model="searchState" class="chosen-select form-control">
+                <option value="1">Juan Simms</option>
+                <option value="2">Catherine Ellis</option>
+                <option value="3">Jessica Silva</option>
+                <option value="4">Rosa Burke</option>
+            </select>
+        </div>
+        <div class="form-group mb-xl">
+            <label class="control-label mb">Case Number</label>
+            <br/>
+            <select chosen="" ng-model="searchState" class="chosen-select form-control">
+                <option value="1">12id484</option>
+                <option value="2">ji9239</option>
+                <option value="3">0292df</option>
+                <option value="4">399hu9</option>
+                <option value="5">09293n</option>
+                <option value="6">ju8929</option>
+            </select>
+        </div>
+    </div>
+</div>

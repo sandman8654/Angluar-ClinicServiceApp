@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.sass-cache
+node_modules
+plugins/cordova-plugin-browsersync
+bower_components
+platforms
+www/vendor
+www/js/app.js
+www/js/base.js
+www/css/custom-mixins.css
+www/css/custom.css
+master/js/configFile.js

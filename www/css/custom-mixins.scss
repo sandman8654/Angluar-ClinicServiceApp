@@ -1,0 +1,28 @@
+@mixin normalText {
+  text-transform: none;
+}
+
+@mixin fontWeightLight {
+  font-weight: 300;
+}
+
+@mixin addIcoMoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon($position, $icon) {
+  &:#{$position} {
+    content: "#{map-get($icons, $icon)}";
+  }
+}

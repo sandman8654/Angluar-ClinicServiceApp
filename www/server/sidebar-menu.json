@@ -1,0 +1,34 @@
+[
+  {
+    "text": "Home",
+    "sref": "app.dashboard_v2",
+    "icon": "icon-home-custom",
+    "translate": "sidebar.nav.HOME"
+  },
+  {
+    "text": "Specimatch",
+    "sref": "app.specimatch",
+    "icon": "icon-specimatch ico-moon",
+    "label": "label label-success",
+    "translate": "sidebar.nav.SPECIMATCH"
+  },
+  {
+    "text": "Patient Records",
+    "sref": "app.patient-list",
+    "icon": "icon-patient-records ico-moon",
+    "label": "label label-info",
+    "translate": "sidebar.nav.PATIENT-RECORDS"
+  },
+  {
+    "text": "Billing",
+    "sref": "app.billing",
+    "icon": "icon-billing ico-moon",
+    "translate": "sidebar.nav"
+  },
+  {
+    "text": "Account Info",
+    "sref": "app.account-info",
+    "icon": "fa fa-bank",
+    "translate": "sidebar.nav.ACCOUNT-INFO"
+  }
+]

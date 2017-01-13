@@ -1,0 +1,87 @@
+<div >
+    <h4 class="text-center text-thin">+1 Panel</h4>
+    <p class="text-center text-thin">Patient name | Case 12345</p>
+    <div class="status">
+        <div class="join-leave">
+            <button class="btn btn-lg hangup-button" ng-disabled="leaveDisable" ng-click="leaveConference()" >Leave</button>
+        </div>
+        <div class="start-finish">
+            <div>Ends</div>
+            <div class="time">5:00 <span>PM</span></div>
+        </div>
+    </div>
+    <p class="text-left text-muted">Colleagues invited</p>
+    <div class="media-box">
+        <div class="pull-left">
+            <img src="img/user/02.jpg" alt="Image" class="media-box-object img-circle thumb32 active">
+        </div>
+        <div class="media-box-body clearfix">
+            <small class="pull-right">
+                <span class="circle circle-active circle-lg text-left"></span>
+                <em class="fa fa-volume-up fa-lg"></em>
+            </small>
+            <strong class="media-box-heading">Juan Simms</strong>
+            <p class="mb-sm">
+                <small>Designer</small>
+            </p>
+        </div>
+    </div>
+    <div class="media-box">
+        <div class="pull-left">
+            <img src="img/user/03.jpg" alt="Image" class="media-box-object img-circle thumb32">
+        </div>
+        <div class="media-box-body clearfix">
+            <small class="pull-right"><span class="circle circle-active circle-lg text-left"></span></small>
+            <strong class="media-box-heading">Tom Smith</strong>
+            <p class="mb-sm">
+                <small>Designer</small>
+            </p>
+        </div>
+    </div>
+    <div class="media-box">
+        <div class="pull-left">
+            <img src="img/user/01.jpg" alt="Image" class="media-box-object img-circle thumb32">
+        </div>
+        <div class="media-box-body clearfix">
+            <small class="pull-right"><span class="circle circle-active circle-lg text-left"></span></small>
+            <strong class="media-box-heading">Janet Williams</strong>
+            <p class="mb-sm">
+                <small>Designer</small>
+            </p>
+        </div>
+    </div>
+    <div class="media-box">
+        <div class="pull-left">
+            <img src="img/user/04.jpg" alt="Image" class="media-box-object img-circle thumb32">
+        </div>
+        <div class="media-box-body clearfix">
+            <small class="pull-right"><span class="circle circle-grey circle-lg text-left"></span></small>
+            <strong class="media-box-heading">Tom Thompson</strong>
+            <p class="mb-sm">
+                <small>Designer</small>
+            </p>
+        </div>
+    </div>
+    <p class="text-left text-muted your-status-title">Your status</p>
+    <div class="media-box">
+        <div class="pull-left">
+            <img src="img/user/05.jpg" alt="Image" class="media-box-object img-circle thumb32">
+        </div>
+        <div class="media-box-body clearfix">
+            <small class="pull-right"><span class="circle circle-grey circle-lg text-left"></span></small>
+            <strong class="media-box-heading">Catherine Ellis</strong>
+            <p class="mb-sm">
+                <small>Designer</small>
+            </p>
+        </div>
+    </div>
+    <div class="pull-right mic-status">
+        <span ng-if="activeMic">Mic active</span>
+        <span ng-if="!activeMic">Mic muted</span>
+        <!--TODO: This will need to be hooked up to a mic service-->
+    <span class="audio" ng-click="activateMic()" ng-class="{active: activeMic}">
+        <em ng-if="!activeMic" class="fa fa-microphone-slash"></em>
+        <em ng-if="activeMic" class="fa fa-microphone"></em>
+    </span>
+    </div>
+</div>

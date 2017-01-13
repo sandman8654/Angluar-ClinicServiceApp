@@ -1,0 +1,30 @@
+{
+  "name": "clinic-app",
+  "version": "1.0.0",
+  "description": "This repo serves as the hybrid mobile/desktop version of the clinic application.",
+  "main": "index.js",
+  "dependencies": {
+    "csp-parse": "^0.0.2",
+    "elementtree": "^0.1.6",
+    "browser-sync": "^2.11.0",
+    "cheerio": "^0.19.0",
+    "glob": "^5.0.15",
+    "npm": "^2.14.15",
+    "plist": "^1.2.0",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/B4CCUS/clinic-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B4CCUS/clinic-app/issues"
+  },
+  "homepage": "https://github.com/B4CCUS/clinic-app"
+}

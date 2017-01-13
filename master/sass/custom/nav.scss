@@ -1,0 +1,28 @@
+.navbar {
+  //border: 1px solid green;
+  //height: 20px;
+}
+
+@media (max-width: 480px) {
+  .sidebar-toggle {
+    position: absolute !important;
+    top: 15px;
+    right: 15px;
+    z-index: 3001;
+  }
+  .nav-wrapper {
+    height: 60px;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    top:55px;
+    transition: top 0.2s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    &.nav-up {
+      top: -40px;
+      transition: top 0.2s ease-in-out;
+    }
+  }
+}
+
+

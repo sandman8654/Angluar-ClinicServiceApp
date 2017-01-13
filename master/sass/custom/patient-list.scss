@@ -1,0 +1,78 @@
+.patient-list {
+  .dataTables_filter {
+    display: none;
+  }
+  #DataTables_Table_0_info {
+    display: none;
+  }
+  table tr td {
+    cursor: pointer;
+  }
+}
+
+.patient-detail {
+  .panel-heading {
+    font-size: 1.3em;
+  }
+  .img-detail, .status {
+    float: left;
+  }
+  .img-detail {
+    width: 70px;
+    margin-left: -20px;
+  }
+  .status strong {
+    padding-right: 30px;
+  }
+  .collapse a {
+    margin-right: 5px;
+  }
+  h5 {
+    margin: 35px 0 20px;
+    font-weight: bold;
+    .btn {
+      margin-top: -8px;
+
+    }
+  }
+  @media (min-width: 768px) {
+    .col-lg-3 {
+      width: 18%;
+    }
+    .col-lg-offset-2 {
+      width: 18%;
+      margin-left: 18%;
+    }
+  }
+  #specimatch {
+    .only-show-wrapper {
+      margin: 0;
+      position: relative;
+      top: -15px;
+      @media only screen and (min-width: 768px) {
+        right: 30px;
+        top: -20px;
+      }
+    }
+    .panel-body {
+      margin-top: 10px;
+    }
+  }
+}
+
+.specimatch {
+  .refine {
+    .checkbox, a {
+      margin-left: 20px;
+    }
+  }
+}
+
+#loadingbar {
+  display: inline;
+  width: 20px;
+}         
+
+.city-state.form-control {
+  width: 50%;
+}

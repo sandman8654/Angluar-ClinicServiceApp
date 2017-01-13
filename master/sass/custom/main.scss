@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?bql9fp');
+  src: url('../fonts/icomoon.eot?bql9fp#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?bql9fp') format('truetype'),
+  url('../fonts/icomoon.woff?bql9fp') format('woff'),
+  url('../fonts/icomoon.svg?bql9fp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  text-transform: none;
+  background-image: none;
+  background-color: #f5f7fa;
+
+  .wrapper > footer {
+    border: none;
+  }
+}
+
+.topnavbar .navbar-header {
+  background-image: none;
+  background-color: $brand-primary;
+}
+
+@media only screen and (min-width: 768px) {
+  .topnavbar {
+    background-image: none;
+    background-color: $brand-primary;
+  }
+}
+
+.intro {
+  .panel-heading {
+    padding-bottom: 0;
+  }
+}
+
+.form-control-feedback {
+  top: 10px;
+}
+
+.h2 small {
+  font-size: 50%;
+}
+
+//TODO: font-size should be applied somewhere else
+.text-light {
+  line-height: 1.1;
+  font-size: 1.2em;
+  @include fontWeightLight();
+}
+
+.btn-gray {
+  background: #f5f7fa;
+  border-color: #f5f7fa;
+  color: #555;
+  &:hover {
+    background: $gray-light;
+    border-color: $gray-light;
+    color: $white;
+  }
+}
+
+.btn-white {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #eaeaea;
+
+  &:focus,
+  &.focus {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #d6d6d6;
+  }
+
+  &:hover {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #d6d6d6;
+  }
+}
+
+.icon-users {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:before {
+    content: "\f0c0";
+  }
+}
+
+.only-show {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.icon-conference {
+  margin-top: 1px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  background: transparent url("../img/b4cc_plus_one_on.png") 0 0 no-repeat;
+  background-size: 100%;
+  &:hover, &.active {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    background: transparent url("../img/b4cc_plus_one_off.png") 0 0 no-repeat;
+    background-size: 100%;
+  }
+}
+
+.form-wizard {
+  .user-photo, .add-user-photo {
+    float: left;
+    margin-right: 10px;
+  }
+  .dataTables_length, .dataTables_filter, .dataTables_paginate, .dataTables_info {
+    display: none !important;
+  }
+  .choose-w9 {
+    width: 60%;
+    float: left;
+  }
+  .download-form {
+  display: block;
+    float: left;
+    margin-top: 45px;
+    margin-left: 20px;
+  }
+}

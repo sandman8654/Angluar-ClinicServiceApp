@@ -1,0 +1,282 @@
+<h3>Account Info
+   <div class="pull-right" ng-controller="AccountController as account">
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.payVendorsModal('sm')">
+           <span class=""><em class="fa fa-plus"></em></span>
+           Pay Vendor(S)
+      </button>
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.chargePatient()">
+           <span class=""><em class="fa fa-plus"></em></span>
+           Charge Patient(S)
+      </button>
+
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.addStripeAccountModal('sm')">
+           <span class=""><em class="fa fa-plus"></em></span>
+           Add Vendor(S)
+      </button>
+      <!--button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.addStripeBankModal('sm')">
+           <span class=""><em class="fa fa-plus"></em></span>
+           Add Bank Info(S)
+      </button-->
+
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.addACH()">
+          <span class=""><em class="fa fa-plus"></em></span>
+          Plaid Link
+      </button>
+
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.chargeACH()">
+          <span class=""><em class="fa fa-cc-visa"></em></span>
+          ACH Charge
+      </button>
+      
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.addVendorID('sm')">
+          <span class=""><em class="fa fa-plus"></em></span>
+           Add Vendor(B)
+      </button>
+
+      <button type="submit" ng-if="account.user_type=='provider'" class="btn btn-default" ng-click="account.addBankID('sm')">
+           <span class=""><em class="fa fa-plus"></em></span>
+           Add Bank Info(B)
+      </button>
+      
+      <script type="text/ng-template" id="/addVendorModal.html">
+         <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+            <h4 id="myModalLabel" class="text-center modal-title">Add Vendor Info(B)</h4>
+         </div>
+         <div class="modal-body">
+            <form role="form" ng-submit="addVendorID()" name="addVendorForm" novalidate=""
+                   class="form-validate mb-lg">
+               <div class="modal-input form-group has-feedback">
+                  <input type="text" name="provider_first_name" placeholder="First Name" ng-model="provider.first_name" required="" class="form-control"/>
+                  <span ng-show="addVendorForm.provider_first_name.$dirty &amp;&amp; addVendorForm.provider_first_name.$error.required" class="text-danger">This field is required</span>
+               </div>
+               <div class="modal-input form-group has-feedback">
+                  <input type="text" name="provider_last_name" placeholder="Last Name" ng-model="provider.last_name" required="" class="form-control"/>
+                  <span ng-show="addVendorForm.provider_last_name.$dirty &amp;&amp; addVendorForm.provider_last_name.$error.required" class="text-danger">This field is required</span>
+               </div>
+               <!-- <div class="form-group has-feedback">
+                  <label class="control-label">Email Address</label>
+                  <input id="exampleInputEmail1" type="email" name="provider_email" placeholder=""
+                         autocomplete="off" ng-model="provider.email" required=""
+                         class="form-control"/>
+                  <span ng-show="account.addVendorForm.provider_email.$dirty &amp;&amp; account.addVendorForm.provider_email.$error.required"
+                        class="text-danger">This field is required</span>
+                  <span ng-show="account.addVendorForm.provider_email.$dirty &amp;&amp; account.addVendorForm.provider_email.$error.email"
+                           class="text-danger">This field must be a valid email address</span>
+               </div> -->
+
+               <div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
+               <div class="footer text-center">
+                  <button id="add-vendor-btn" type="submit" ng-disabled="is_loading" class="btn btn-primary">Create Vendor &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" alt="App Logo" class="img-responsive" /></button>
+               </div>
+            </form>
+         </div>
+      </script>
+
+      <!-- Add Vendor Bank Modal Start -->
+      <script type="text/ng-template" id="/addVendorBankModal.html">
+         <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+            <h4  class="text-center modal-title">Add Bank Info(B)</h4>
+         </div>
+         <div class="modal-body">
+            <form role="form" ng-submit="addBankID()" name="addBankAccountForm" novalidate=""
+                   class="form-validate mb-lg">
+               <div class="modal-input form-group has-feedback">
+                  <input type="number" name="account_number" placeholder="Account Number" ng-model="bank.account_number" required="" class="form-control"/>
+                  <span ng-show="addBankAccountForm.account_number.$dirty &amp;&amp; addBankAccountForm.account_number.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="addBankAccountForm.account_number.$dirty &amp;&amp; addBankAccountForm.account_number.$error.number" class="text-danger">This field must be a valid number</span>
+               </div>
+
+               <div class="modal-input form-group has-feedback">
+                  <input type="number" name="routing_number" placeholder="Routing Number"
+                         ng-model="bank.routing_number" required="" class="form-control"/>
+                  <span ng-show="addBankAccountForm.routing_number.$dirty &amp;&amp; addBankAccountForm.routing_number.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="addBankAccountForm.routing_number.$dirty &amp;&amp; addBankAccountForm.routing_number.$error.number" class="text-danger">This field must be a valid number</span>
+               </div>
+
+               <div ng-show="bankAuthMsg" class="alert alert-danger text-center">{{bankAuthMsg}}</div>
+               <div class="footer text-center">
+                  <button id="add-bank-btn" type="submit" ng-disabled="is_loading" class="btn btn-primary">Add Bank Account &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" alt="App Logo" class="img-responsive" /></button>
+               </div>
+            </form>
+         </div>
+      </script>
+      <!-- Add Vendor Bank Modal End -->
+
+
+      <!-- Add Stripe Account Modal Start-->
+      <script type="text/ng-template" id="/addStripeAccountModal.html">
+         <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+            <h4 id="myModalLabel" class="text-center modal-title">Add Stripe Account(S)</h4>
+         </div>
+         <div class="modal-body">
+            <form role="form" ng-submit="addStripeAccount()" name="addStripeAccountForm" novalidate=""
+                   class="form-validate mb-lg">
+               <div class="modal-input form-group has-feedback">
+                  <input id="stripe-account-email" type="email" name="email" placeholder="Email Address" autocomplete="off" ng-model="stripe_account.email" required=""  class="form-control"/>
+                  <span ng-show="addStripeAccountForm.email.$dirty &amp;&amp; addStripeAccountForm.email.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="addStripeAccountForm.email.$dirty &amp;&amp; addStripeAccountForm.email.$error.email" class="text-danger">This field must be a valid email address</span>
+               </div>
+
+               <div class="modal-input form-group has-feedback">
+                  <input type="text" name="firstname" placeholder="First Name" ng-model="stripe_account.firstname" required="" class="form-control"></input>
+                  <span ng-show="addStripeAccountForm.firstname.$dirty &amp;&amp; addStripeAccountForm.firstname.$error.required" class="text-danger">This field is required</span>
+               </div>
+
+               <div class="modal-input form-group has-feedback">
+                  <input type="text" name="lastname" placeholder="Last Name" ng-model="stripe_account.lastname" required="" class="form-control"></input>
+                  <span ng-show="addStripeAccountForm.lastname.$dirty &amp;&amp; addStripeAccountForm.lastname.$error.required" class="text-danger">This field is required</span>
+               </div>
+
+               <div class="modal-input form-group has-feedback">
+                  <input type="number" id="stripe_account_number" name="account_number" required="" class="form-control" ng-model="stripe_account.account_number" placeholder="Account Number"></input>
+                  <span ng-show="addStripeAccountForm.account_number.$dirty &amp;&amp; addStripeAccountForm.account_number.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="addStripeAccountForm.account_number.$dirty &amp;&amp; addStripeAccountForm.account_number.$error.number" class="text-danger">This field must be a valid number</span>
+               </div>
+
+               <div class="modal-input form-group has-feedback">
+                  <input type="number" id="stripe_routing_number" name="routing_number" required="" class="form-control" ng-model="stripe_account.routing_number" placeholder="Routing Number"></input>
+                  <span ng-show="addStripeAccountForm.routing_number.$dirty &amp;&amp; addStripeAccountForm.routing_number.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="addStripeAccountForm.routing_number.$dirty &amp;&amp; addStripeAccountForm.routing_number.$error.number" class="text-danger">This field must be a valid number</span>
+               </div>
+               <div class="modal-input form-group has-feedback">
+                  <div class="clearfix text-center">
+                     <div class="checkbox c-checkbox pull-left mt0">
+                        <label>
+                           <input type="checkbox" required="" name="agreed_tos" ng-model="stripe_account.agreed_tos" />
+                           <span id="" class="stripe-account-checkbox fa fa-check"></span>I agree with the <a href="#">Terms</a>
+                        </label>
+                     </div>
+                  </div>
+                  <div ng-show="addStripeAccountForm.agreed_tos.$dirty &amp;&amp; addStripeAccountForm.agreed_tos.$error.required" class="text-danger">You must agree the terms</div>
+               </div>                
+               
+
+               <div ng-show="stripeAccountMsg" class="alert alert-danger text-center">{{stripeAccountMsg}}</div>
+               <div class="footer text-center">
+                  <button id="add-bank-btn" ng-disabled="is_loading" type="submit" class="btn btn-primary">Add Stripe Account &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" class="img-responsive" /></button>
+               </div>
+            </form>
+         </div>
+      </script>
+      <!-- Add Stripe Account Modal End -->
+
+
+      <!-- Add Stripe Bank Modal Start-->
+      <!--script type="text/ng-template" id="/addStripeBankModal.html">
+         <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+            <h4  class="text-center modal-title">Add Stripe Bank Info(S)</h4>
+         </div>
+         <div class="modal-body">
+            <form role="form" ng-submit="addStripeBankInfo()" name="addStripeBankForm" novalidate="" class="form-validate mb-lg">
+               <div class="form-group has-feedback">
+                  <input id="exampleInputEmail1" type="email" name="account_email" placeholder="Email"
+                         autocomplete="off" ng-model="stripe_bank.account_email" required=""
+                         class="form-control"/>
+                  <span ng-show="addStripeBankForm.account_email.$dirty &amp;&amp; addStripeBankForm.account_email.$error.required"
+                        class="text-danger">This field is required</span>
+                  <span ng-show="addStripeBankForm.account_email.$dirty &amp;&amp; addStripeBankForm.account_email.$error.email"
+                           class="text-danger">This field must be a valid email address</span>
+               </div>
+
+               <div class="form-group has-feedback">
+                  <input type="text" name="account_holder_name" placeholder="Account Holder Name"
+                         ng-model="stripe_bank.account_holder_name" required="" class="form-control"/>
+                  <span ng-show="addStripeBankForm.account_holder_name.$dirty &amp;&amp; addStripeBankForm.account_holder_name.$error.required"
+                       class="text-danger">This field is required</span>
+               </div>
+
+               <div class="form-group has-feedback">
+                  <input type="number" name="account_number" placeholder="Account Number"
+                         ng-model="stripe_bank.account_number" required="" class="form-control"/>
+                  <span ng-show="addStripeBankForm.account_number.$dirty &amp;&amp; addStripeBankForm.account_number.$error.required"
+                       class="text-danger">This field is required</span>
+                  <span ng-show="addStripeBankForm.account_number.$dirty &amp;&amp; addStripeBankForm.account_number.$error.number"
+                           class="text-danger">This field must be a valid number</span>
+               </div>
+
+               <div class="form-group has-feedback">
+                  <input type="number" name="account_routing_number" placeholder="Routing Number"
+                         ng-model="stripe_bank.account_routing_number" required="" class="form-control"/>
+                  <span ng-show="addStripeBankForm.account_routing_number.$dirty &amp;&amp; addStripeBankForm.account_routing_number.$error.required"
+                       class="text-danger">This field is required</span>
+                  <span ng-show="addStripeBankForm.account_routing_number.$dirty &amp;&amp; addStripeBankForm.account_routing_number.$error.number"
+                           class="text-danger">This field must be a valid number</span>
+               </div>
+               <div ng-show="stripeBankMsg" class="alert alert-danger text-center">{{stripeBankMsg}}</div>
+               <div class="footer text-center">
+                  <button id="add-bank-btn" ng-disabled="is_loading" type="submit" class="btn btn-primary">Add Bank Account &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" class="img-responsive" /></button>
+               </div>
+            </form>
+         </div>
+      </script-->
+      <!-- Add Stripe Bank Modal End -->
+
+      <!-- Pay Vendoers Modal start -->
+      <script type="text/ng-template" id="/payVendorsModal.html">
+         <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+            <h4  class="text-center modal-title">Pay</h4>
+         </div>
+
+         <div class="modal-body">
+            <form ng-submit="payVendors()" name="payVendorForm" novalidate="" class="form-validate mb-lg">
+               <!-- <div class="form-group has-feedback">
+                  <input type="email" ng-model="email" placeholder="Email" required="" class="form-control"></input>
+                  <span ng-show="payVendorForm.email.$dirty &amp;&amp; payVendorForm.email.$error.required"
+                        class="text-danger">This field is required</span>
+                  <span ng-show="payVendorForm.email.$dirty &amp;&amp; payVendorForm.email.$error.email"
+                           class="text-danger">This field must be a valid email address</span>
+               </div> -->
+               <div class="modal-input form-group has-feedback">
+                  <input id="stripe-account-email" type="email" name="email" placeholder="Email Address" autocomplete="off" ng-model="email" required=""  class="form-control"/>
+                  <span ng-show="payVendorForm.email.$dirty &amp;&amp; payVendorForm.email.$error.required" class="text-danger">This field is required</span>
+                  <span ng-show="payVendorForm.email.$dirty &amp;&amp; payVendorForm.email.$error.email" class="text-danger">This field must be a valid email address</span>
+               </div>
+               <div ng-show="payErrorMsg" class="alert alert-danger text-center">{{payErrorMsg}}</div>
+               <div class="footer text-center">
+                  <button id="add-bank-btn" ng-disabled="is_loading" type="submit" class="btn btn-primary">Pay Provider &nbsp; <img id="loadingbar" ng-show="is_loading"  src="img/loading.gif" class="img-responsive" /></button>
+               </div>
+            </form>
+         </div>
+      </script>
+      <!-- Pay vendors modal end -->
+   </div>
+</h3>
+
+<div ng-controller="AccountController as account" ng-init="account.getDetailInfo()">
+	<div class="col-lg-6 col-lg-offset-3" id="account-panel">
+      <!-- START widget-->
+      <div class="panel widget">
+         <div class="panel-body">
+            <div class="row row-table">
+               <div class="col-xs-6 text-center">
+                  <img src="img/user/01.jpg" alt="Image" class="img-circle thumb96" />
+               </div>
+               <div class="col-xs-6">
+                  <h3 class="mt0">Peggy Peters</h3>
+                  <ul class="list-unstyled">
+                     <li class="mb-sm">
+                        <em class="fa fa-map-marker fa-fw"></em>{{account.doctor.fullname}}</li>
+                     <li class="mb-sm">
+                        <em class="fa fa-twitter fa-fw"></em>@asdasd</li>
+                     <li class="mb-sm">
+                        <em class="fa fa-envelope fa-fw"></em>{{account.doctor.email}}</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="panel-body bg-inverse">
+            <div class="row row-table text-center">
+               <div class="col-xs-4">
+                  <p class="m0 h3">700</p>
+                  <p class="m0 text-muted">Patients</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

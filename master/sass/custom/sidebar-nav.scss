@@ -1,0 +1,72 @@
+.icon-billing {
+  &:after {
+    content: '\e902';
+  }
+}
+
+.icon-specimatch {
+  &:after {
+    content: '\e903';
+  }
+}
+
+.icon-patient-records {
+  &:after {
+    content: '\e901';
+  }
+}
+.aside-collapsed .sidebar > .nav > li > a > em, .aside-collapsed .sidebar > .nav > li > .nav-item > em {
+
+  &.icon-home-custom {
+    background:  url("../img/b4cc-icons_home_grey.png") 0 0 no-repeat;
+    width: 35px;
+    height: 35px;
+    background-size: 33px 33px;
+  }
+}
+.sidebar > .nav > li > a > em {
+
+  &.icon-home-custom {
+    position: relative;
+    top: 2px;
+    left: -1px;
+    background:  url("../img/b4cc-icons_home_grey.png") 0 0 no-repeat;
+    width: 30px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+}
+.aside-collapsed .sidebar > .nav > li.active > a > em, .sidebar > .nav > li.open > a > em,.aside-collapsed .sidebar > .nav > li > a:hover > em {
+  &.icon-home-custom {
+    background:  url("../img/b4cc-icons_home_green.png") 0 0 no-repeat;
+    width: 35px;
+    height: 35px;
+    background-size: 33px 33px;
+  }
+}
+.sidebar > .nav > li.active > a > em, .sidebar > .nav > li.open > a > em, .sidebar > .nav > li > a:hover > em {
+  &.icon-home-custom {
+    background:  url("../img/b4cc-icons_home_green.png") 0 0 no-repeat;
+    width: 30px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+}
+
+.sidebar > .nav > li.active, .sidebar > .nav > li.active > a, .sidebar > .nav > li.active .nav, .sidebar > .nav > li.open, .sidebar > .nav > li.open > a, .sidebar > .nav > li.open .nav {
+  color: $brand-primary;
+}
+
+.sidebar > .nav > li.active > a > em, .sidebar > .nav > li.open > a > em {
+  color: $brand-primary;
+}
+
+.sidebar > .nav > li > a:focus, .sidebar > .nav > li > a:hover, .sidebar > .nav > li > .nav-item:focus, .sidebar > .nav > li > .nav-item:hover {
+  color: $brand-primary;
+}
+
+.bg-yellow-light, .bg-gray-dark, .bg-gray-light, .bg-blue-light {
+  small, .icon-globe, h2, .h2, .text-light {
+    color: $component-active-color;
+  }
+}

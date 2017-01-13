@@ -1,0 +1,595 @@
+<h3>Specimatch
+    <div class="pull-right"><a ui-sref="app.specimatch" class="btn btn-sm btn-white text-sm">&lt; back</a>
+    </div>
+</h3>
+<div class="row search-results" ng-if="productDetails.details.recordType == 'clinicalTrials'">
+    <!--start main left column-->
+    <div class="col-lg-9 main-panel">
+        <div class="row">
+            <div class="col-lg-12 header-title">
+                <h4>CLINICAL TRIAL</h4>
+                <div uib-dropdown="dropdown" class="btn-group mb-sm pull-right">
+                    <button type="button" ng-disabled="disabled" uib-dropdown-toggle=""
+                            class="btn dropdown-toggle btn-default">Save for patient
+                        <span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="#">Action</a>
+                        </li>
+                        <li><a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="main-detail" ng-bind="productDetails.details.OfficialTitle"></div>
+            </div>
+        </div>
+        <!--left panel-->
+        <div class="col-lg-6">
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        NCT ID
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.IDInfo[0].NCTID"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                       Protocol Status
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.CurrentProtocolStatus"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        study id
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.IDInfo[0].OrgStudyID"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        study start date
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.StartDate[0]._"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--right panel-->
+        <div class="col-lg-6">
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        sponsor
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.Sponsors[0].LeadSponsor"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        study type
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.ProtocolDetail[0].StudyType"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        study on phase
+                    </div>
+                    <ul>
+                        <li ng-bind="productDetails.details.ProtocolPhase"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="title">
+                        eligibility
+                    </div>
+                    <ul>
+                        <li ng-bind="'Low Age: ' + productDetails.details.Eligibility[0].LowAge"></li>
+                        <li ng-bind="'High Age: ' + productDetails.details.Eligibility[0].HighAge"></li>
+                        <li ng-bind="'Gender: ' + productDetails.details.Eligibility[0].Gender"></li>
+<!--
+                        <li><a href="" scroll-to="recruitment">Full recruitment Information</a></li>
+-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-12 study-info">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="title">
+                        purpose
+                    </div>
+                    {{productDetails.details.BriefSummary[0].Para.substring(productDetails.details.BriefSummary[0].Para.indexOf(',')+1)}}
+                </div>
+            </div>
+            <div id="tracking" class="panel panel-default">
+                <div ng-class="{'panel-heading-collapsed':tracking}" class="panel-heading">
+                    Tracking Information
+                    <paneltool tool-collapse="tool-collapse" ng-init="tracking=true"></paneltool>
+                </div>
+                <div uib-collapse="tracking" class="panel-wrapper">
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <!--<tr>-->
+                            <!--<th>Last Name</th>-->
+                            <!--<th>Username</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <tbody>
+							<tr>
+                                <td>Start Date</td>
+                                <td ng-bind="productDetails.details.StartDate[0]._"></td>
+                            </tr>
+                            <tr>
+                                <td class="first">Verification Date</td>
+                                <td ng-bind="productDetails.details.VerificationDate"></td>
+                            </tr>
+                            <tr>
+                                <td>Last Updated Date</td>
+                                <td ng-bind="productDetails.details.LastChangedDate"></td>
+                            </tr>
+                            <tr>
+                                <td>Primary Completion Date</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Current Primary Outcome Measures</td>
+                                <td>
+                                    <ul>
+                                        <li>Histopathologic response (tumor present or completely absent) in the
+                                            post-treatment resected specimen [ Designated as safety issue: No ]
+                                        </li>
+                                        <li>Histopathologic response (tumor present or completely absent) in the
+                                            post-treatment resected specimen [ Designated as safety issue: No ]
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Original Primary Outcome Measures</td>
+                                <td>Same as current</td>
+                            </tr>
+                            <tr>
+                                <td>Change History</td>
+                                <td><a href="https://clinicaltrials.gov/ct2/archive/NCT00898495">Complete list of
+                                    historical
+                                    versions of study NCT00898495 on
+                                    ClinicalTrials.gov Archive Site</a></td>
+                            </tr>
+                            <tr>
+                                <td>Current Secondary Outcome Measures ICMJE</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Original Secondary Outcome Measures</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Current Other Outcome Measures</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Original Other Outcome Measures</td>
+                                <td>N/A</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" id="descriptive">
+                <div ng-class="{'panel-heading-collapsed':descriptive}" class="panel-heading">
+                    Descriptive Information
+                    <paneltool tool-collapse="tool-collapse" ng-init="descriptive=true"></paneltool>
+                </div>
+                <div uib-collapse="descriptive" class="panel-body">
+                    <!-- START table-responsive-->
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <!--<tr>-->
+                        <!--<th>Last Name</th>-->
+                        <!--<th>Username</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <tbody>
+                        <tr>
+                            <tr>
+                            <td class="first">Brief Title</td>
+                            <td  ng-bind="productDetails.details.BriefTitle"></td>
+                        </tr>
+                        <tr>
+                            <td>Offical Title</td>
+                            <td ng-bind="productDetails.details.OfficialTitle"></td>
+                        </tr>
+                        <tr>
+                            <td>Brief Summary</td>
+                            <td ng-bind="productDetails.details.BriefSummary[0].Para.substring(productDetails.details.BriefSummary[0].Para.indexOf(',')+1)"></td>
+                        </tr>
+                        <tr>
+                            <td>Detailed Description</td>
+                            <td>
+                                OBJECTIVES:
+                                <ul>
+                                    <li ng-bind="productDetails.details.DetailedDescription[0].Para.substring(productDetails.details.DetailedDescription[0].Para.indexOf(',')+1)"> </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Study Type</td>
+                            <td ng-bind="productDetails.details.ProtocolDetail[0].StudyType"></td>
+                        </tr>
+                        <tr>
+                            <td>Study Design</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Target Follow-up Duration</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Biospecimen</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Sampling Method</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Study Population</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Condition</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Intervention</td>
+                            <td>
+                                <ul>
+                                    <li>Genetic: loss of heterozygosity analysis</li>
+                                    <li>Genetic: polymerase chain reaction</li>
+                                    <li>Genetic: polymorphism analysis</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Study Group/Cohort (s)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Publications *</td>
+                            <td>N/A</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- END table-responsive-->
+                </div>
+            </div>
+            <div class="panel panel-default" id="recruitment">
+                <div ng-class="{'panel-heading-collapsed':recruitment}" class="panel-heading">
+                    Recruitment Information
+                    <paneltool tool-collapse="tool-collapse" ng-init="recruitment=false"></paneltool>
+                </div>
+                <div uib-collapse="recruitment" class="panel-body">
+                    <!-- START table-responsive-->
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <!--<tr>-->
+                        <!--<th>Last Name</th>-->
+                        <!--<th>Username</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <tbody>
+                        <tr>
+                            <td class="first">Brief Title</td>
+                            <td  ng-bind="productDetails.details.BriefTitle"></td>
+                        </tr>
+                        <tr>
+                            <td>Offical Title</td>
+                            <td ng-bind="productDetails.details.OfficialTitle"></td>
+                        </tr>
+                        <tr>
+                            <td>Brief Summary</td>
+                            <td ng-bind="productDetails.details.BriefSummary[0].Para.substring(productDetails.details.BriefSummary[0].Para.indexOf(',')+1)"></td>
+                        </tr>
+                        <tr>
+                            <td>Detailed Description</td>
+                            <td>
+                                OBJECTIVES:
+                                <ul>
+                                    <li ng-bind="productDetails.details.DetailedDescription[0].Para.substring(productDetails.details.DetailedDescription[0].Para.indexOf(',')+1)"> </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Study Type</td>
+                            <td ng-bind="productDetails.details.ProtocolDetail[0].StudyType"></td>
+                        </tr>
+                        <tr>
+                            <td>Study Design</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Target Follow-up Duration</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Biospecimen</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Sampling Method</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Study Population</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Condition</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Intervention</td>
+                            <td>
+                                <ul>
+                                    <li>Genetic: loss of heterozygosity analysis</li>
+                                    <li>Genetic: polymerase chain reaction</li>
+                                    <li>Genetic: polymorphism analysis</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Study Group/Cohort (s)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Publications *</td>
+                            <td>N/A</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- END table-responsive-->
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+    <!--end main left column-->
+    <!--start sidebar-->
+    <div class="col-lg-3 results-sidebar">
+        <!-- Categories-->
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>CONTACT</h4></div>
+            <div class="panel-body">
+                <div ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="productDetail in productDetails.details.Location">
+                    {{productDetail.Facility[0].FacilityName != "" ? productDetail.Facility[0].FacilityName : "--"}}
+                    <br/>
+                    {{productDetail.CTGovContact[0].Phone != "" ? productDetail.CTGovContact[0].Phone : "--"}}
+                    <br/>
+                    {{productDetail.CTGovContact[0].Email != "" ? productDetail.CTGovContact[0].Email : "--"}}
+                </div>
+            </div>
+        </div>
+        <!-- Tag Cloud-->
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>LOCATION</h4></div>
+            <div class="panel-body">
+                <div ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="productDetail in productDetails.details.Location">
+                    {{productDetail.Facility[0].FacilityName != "" ? productDetail.Facility[0].FacilityName : "--"}}
+                    <br/>
+                    {{productDetail.Facility[0].PostalAddress[0].City != "" ? productDetail.Facility[0].PostalAddress[0].City : "--"}}
+                    <br/>
+                    {{productDetail.Facility[0].PostalAddress[0].PoliticalSubUnitName[0]._ != "" ? productDetail.Facility[0].PostalAddress[0].PoliticalSubUnitName[0]._ : "--"}}, {{productDetail.Facility[0].PostalAddress[0].CountryName[0]._ != "" ? productDetail.Facility[0].PostalAddress[0].CountryName[0]._ : "--"}}
+                    <br/>
+                    {{productDetail.Facility[0].PostalAddress[0].PostalCode_ZIP != "" ? productDetail.Facility[0].PostalAddress[0].PostalCode_ZIP : "--"}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end sidebar-->
+</div>
+<div class="row search-results" ng-if="productDetails.details.recordType == 'drugs'">
+   <!--start main left column-->
+   <div class="col-lg-9 main-panel">
+      <div class="row">
+         <div class="col-lg-12 header-title">
+            <h4>DRUGS TRIAL</h4>
+            <div uib-dropdown="dropdown" class="btn-group mb-sm pull-right">
+               <button type="button" ng-disabled="disabled" uib-dropdown-toggle=""
+                       class="btn dropdown-toggle btn-default">Save for patient
+                  <span class="caret"></span>
+               </button>
+               <ul role="menu" class="dropdown-menu">
+                  <li><a href="#">Action</a>
+                  </li>
+                  <li><a href="#">Another action</a>
+                  </li>
+                  <li><a href="#">Something else here</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-default">
+         <div class="panel-body">
+            <div class="main-detail" ng-bind="productDetails.details.DrugInfoMetaData[0].DrugInfoDescription"></div>
+         </div>
+      </div>
+      <!--left panel-->
+      <div class="col-lg-6">
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 Title
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoTitle"></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 US Brand Names
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoMetaData[0].USBrandNames[0].USBrandName"></li>
+               </ul>
+            </div>
+         </div>
+        
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 Drug Info Type
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoMetaData[0].DrugInfoType"></li>
+               </ul>
+            </div>
+         </div>
+        
+          <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 Drug Info Audience
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoMetaData[0].DrugInfoAudience"></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                Date First Published
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DateFirstPublished"></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                Date Last Modified 
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DateLastModified"></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!--right panel-->
+      <div class="col-lg-6">
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                  Pronunciation
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoMetaData[0].PronunciationInfo[0].TermPronunciation"></li>
+               </ul>
+            </div>
+         </div>
+          <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                  FDA Approved
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoMetaData[0].FDAApproved"></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 Disclaimer
+               </div>
+               <ul>
+                  <li ng-bind="productDetails.details.DrugInfoDisclaimer[0].Para[0]._"></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel panel-flat">
+            <div class="panel-body">
+               <div class="title">
+                 Drug Info URL
+               </div>
+               <ul>
+                  <li><a href="{{productDetails.details.DrugInfoMetaData[0].DrugInfoURL[0]._a.xref}}" target="_blank">Full drug Information</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   <!--end main left column-->
+   <!--start sidebar-->
+   <div class="col-lg-3 results-sidebar">
+      <!-- Categories-->
+      <div class="panel panel-default">
+         <div class="panel-heading"><h4>CONTACT</h4></div>
+         <div class="panel-body">
+            {{productDetails.details.Location[0].Facility[0].FacilityName}}
+            <br/>
+            {{productDetails.details.Location[0].CTGovContact[0].Phone}}
+            <br/>
+            {{productDetails.details.Location[0].CTGovContact[0].Email}}
+         </div>
+      </div>
+      <!-- Tag Cloud-->
+      <!-- <div class="panel panel-default">
+         <div class="panel-heading"><h4>LOCATION</h4></div>
+         <div class="panel-body">
+            Shanghai Yizhong Biotechnology Co., LTD.
+            <br/>
+            1234 Address St.
+            <br/>
+            Somewhere, State
+            <br/>
+            37373
+         </div>
+      </div> -->
+   </div>
+   <!--end sidebar-->
+</div>

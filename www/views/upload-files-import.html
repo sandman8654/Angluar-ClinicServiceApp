@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://cdn01.boxcdn.net/content-experience/0.48.0/third-party/dicom/dicom.min.css">
+<div id="my-container" style="position:absolute; top:80px; left:200px; width: 600px; height:600px; border:1px solid black;" dicomFolderId="{{patientFiles.dicomFolderId}}" accessToken="{{patientFiles.accessToken}}"></div>
+<script>
+    $(function () {
+        setTimeout(function () {
+            box.dicom.createImportWidget('my-container', {
+                'accessToken': $("#my-container")
+                    .attr('accessToken'),
+                'folderId': $("#my-container")
+                    .attr('dicomFolderId')
+            });
+        }, 2500);
+    });
+
+</script>
