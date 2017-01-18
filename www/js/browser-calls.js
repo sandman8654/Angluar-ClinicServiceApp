@@ -16,22 +16,22 @@ var apiUrl = "http://52.87.207.32:8080/";
 //~}
 
 /* Get a Twilio Client token with an AJAX request */
-//~ $(document)
-    //~ .ready(function () {
-        //~ $.post(apiUrl + "token/generate", {
-            //~ page: window.location.pathname,
-            //~ user_id: 'USER_' + Math.floor(Math.random() * 90000) + 10000
-        //~ }, function (data) {
-//~ 
+  $(document)
+      .ready(function () {
+          $.post(apiUrl + "token/generate", {
+              page: window.location.pathname,
+              user_id: 'USER_' + Math.floor(Math.random() * 90000) + 10000
+          }, function (data) {
+  
             //~ // Set up the Twilio Client Device with the token
-            //~ $("#me")
-                //~ .html('Your ID: ' + data.user_id);
-            //~ Twilio.Device.setup(data.token, {
-                //~ debug: true,
-                //~ region: "ie1"
-            //~ });
-        //~ });
-    //~ });
+              $("#me")
+                  .html('Your ID: ' + data.user_id);
+              Twilio.Device.setup(data.token, {
+                  debug: true,
+                  region: "ie1"
+              });
+          });
+      });
 
 var chatUsers = [];
 
@@ -60,32 +60,32 @@ var chatUsers = [];
 //~ });
 
 //~ /* Callback to let us know Twilio Client is ready */
-//~ Twilio.Device.ready(function (device) {
+ Twilio.Device.ready(function (device) {
     //~ updateCallStatus("Ready");
-//~ });
+ });
 
 //~ /* Report any errors to the call status display */
-//~ Twilio.Device.error(function (error) {
-    //~ updateCallStatus("ERROR: " + error.message);
-//~ });
+ Twilio.Device.error(function (error) {
+      updateCallStatus("ERROR: " + error.message);
+ });
 
 /* Callback to determine if "support_agent" is available or not */
-//~ Twilio.Device.presence(function (presenceEvent) {
-    //~ console.log(presenceEvent.from);
-//~ });
+ Twilio.Device.presence(function (presenceEvent) {
+     console.log(presenceEvent.from);
+ });
 
 /* Callback for when Twilio Client initiates a new connection */
-//~ Twilio.Device.connect(function (connection) {
-    //~ // Enable the hang up button and disable the call buttons
-    //~ $(".hangup-button").prop("disabled", false);
-    //~ $(".join-conf-btn").prop("disabled", true);
-//~ 
-    //~ // If phoneNumber is part of the connection, this is a call from a
-    //~ // support agent to a customer's phone
-    //~ if ("phoneNumber" in connection.message) {
-        //~ updateCallStatus("In call with " + connection.message.phoneNumber);
-    //~ } else {
-        //~ // This is a call from a website user to a support agent
+  Twilio.Device.connect(function (connection) {
+    //  // Enable the hang up button and disable the call buttons
+      $(".hangup-button").prop("disabled", false);
+      $(".join-conf-btn").prop("disabled", true);
+//  
+    //  // If phoneNumber is part of the connection, this is a call from a
+    //  // support agent to a customer's phone
+     if ("phoneNumber" in connection.message) {
+        //  updateCallStatus("In call with " + connection.message.phoneNumber);
+    //  } else {
+        //  // This is a call from a website user to a support agent
         //~ updateCallStatus("In call with user");
     //~ }
 //~ });

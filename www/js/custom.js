@@ -1,5 +1,5 @@
 /**
- * Created by jayhoots on 2/26/16.
+ * Created by sandman on 2/26/16.
  */
 // Hide Header on on scroll down
 var didScroll;
